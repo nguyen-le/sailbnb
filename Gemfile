@@ -46,3 +46,5 @@ group :development do
 end
 
 gem 'newrelic_rpm'
+gem 'bootstrap-sass'
+gem 'backbone-on-rails'

@@ -1,0 +1,26 @@
+<h1>Register</h1>
+<form action="<%= users_url %>" method="post">
+  <input 
+    type="hidden" 
+    name="authenticity_token" 
+    id="" 
+    value="<%= form_authenticity_token %>" 
+  />
+  <div>
+    First Name
+    <input type="text" name="user[f_name]" id="" value="" />
+  </div>
+  <div>
+    Last Name
+    <input type="text" name="user[l_name]" id="" value="" />
+  </div>
+  <div>
+    Email
+    <input type="text" name="user[email_address]" id="" value="" />
+  </div>
+  <div>
+    Password
+    <input type="password" name="user[password]" id="" value="" />
+  </div>
+  <input type="submit" name="" id="" value="Submit" />
+</form>
