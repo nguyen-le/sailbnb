@@ -16,6 +16,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+body {
+  font-family: Circular, 'helvetica neue', helvetica;
+}
+
 #login-form {
   border: thin dashed blue;
   position:absolute;
@@ -25,6 +29,40 @@
   margin-top: -200px;
   left: 50%;
   margin-left: -200px;
+}
+
+#login-panel-one {
+  position: relative;
+  background-image: url('http://iliketowastemytime.com/sites/default/files/orsos-floating-mobile-island1.jpg');
+  height: 600px;
+  background-size: cover;
+}
+
+#login-panel-one * {
+  color:white;
+}
+#login-start {
+  position: absolute;
+  width:100%;
+  display:block;
+  bottom: 0;
+  color: white;
+  background-color: rgba(0,0,0,0.5);
+  padding: 30px;
+}
+
+#login-start > a {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #ff5a5f;
+  color: white;
+  font-size: 1.5em;
+  text-decoration: none;
+}
+
+#login-panel-two {
+  padding: 10px;
+  color: #565a5c;
 }
 
 .login-field {
