@@ -29,4 +29,11 @@ class ApplicationController < ActionController::Base
       redirect_to login_url
     end
   end
+
+  def no_login_twice
+    if logged_in?
+      redirect_to root_url
+    end
+  end
+
 end

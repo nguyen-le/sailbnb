@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by_credentials(
-      user_params[:email_address], 
+      user_params[:email], 
       user_params[:password]
     )
 
@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
       redirect_to root_url
     else
       flash.now[:notices] = ["Invalid name/password combination"]
-      @user = User.new(email_address: user_params[:email_address])
+      @user = User.new(email: user_params[:email])
       render :new
     end
   end
@@ -29,13 +29,7 @@ class SessionsController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email_address, :password)
-  end
-
-  def no_login_twice
-    if logged_in?
-      redirect_to root_url
-    end
+    params.require(:user).permit(:email, :password)
   end
 
 end

@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :no_login_twice, only: [:new, :create]
   def new
     @user = User.new
     render :new
@@ -21,7 +22,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:f_name, :l_name, :email_address, :password_digest, :password)
+    params.require(:user).permit(:f_name, :l_name, :email, :password_digest, :password)
   end
 
 end
