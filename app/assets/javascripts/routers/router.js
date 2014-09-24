@@ -18,7 +18,6 @@ WaterBnb.Routers.Router = Backbone.Router.extend({
         this._currentView = view;
         this.$rootEl.html(view.render().$el);
     },
-
     navbar: function() {
         console.log('navbar loaded');
     }

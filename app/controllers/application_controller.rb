@@ -25,7 +25,6 @@ class ApplicationController < ActionController::Base
 
   def must_be_logged_in
     unless logged_in?
-      flash[:notices] = ["Must be logged in first!"]
       redirect_to login_url
     end
   end

@@ -1,2 +1,55 @@
 <h1>Boats Index Jst Ejs</h1>
-<%= boats %>
+<div class="map">
+  <p>map</p>
+</div> 
+<div class="search-area">
+  <form>
+    <div class="row">
+      <div class='col-xs-3'>
+        <label for="">Dates</label>
+      </div>
+      <div>
+        <input type="text" name="" id="" value="" />
+      </div>
+    </div>
+    <hr />
+
+    <div class="row">
+      <div class="col-xs-3">
+        <label for="">Boat Type</label>
+      </div>
+      <div>
+        <input type="text" name="" id="" value="" />
+      </div>
+    </div>
+    <hr />
+      
+    <div class="row">
+      <div class="col-xs-3">
+        <label for="">Boat Type</label>
+      </div>
+      <div>
+        <input type="text" name="" id="" value="" />
+      </div>
+    </div>
+    <hr />
+
+    <div class="row">
+      <div class="col-xs-3">
+        <label for="">Boat Type</label>
+      </div>
+      <div>
+        <input type="text" name="" id="" value="" />
+      </div>
+    </div>
+    <hr />
+  </form>
+
+  <ul>
+    <% boats.each( function(boat) { %>
+      <li><%= boat.escape('name') %></li>
+    <% } ) %>
+  </ul>
+  <div class="display-area">
+  </div>
+</div>
