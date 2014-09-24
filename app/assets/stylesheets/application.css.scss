@@ -21,6 +21,11 @@ body {
   font-family: 'open sans', Circular, 'helvetica neue', helvetica;
 }
 
+#env {
+  background-image: url('env.png');
+  background-size: cover;
+}
+
 #login-form {
   border: thin dashed blue;
   position:absolute;
