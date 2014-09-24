@@ -15,9 +15,10 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:800,600,400);
 
 body {
-  font-family: Circular, 'helvetica neue', helvetica;
+  font-family: 'open sans', Circular, 'helvetica neue', helvetica;
 }
 
 #login-form {
@@ -33,31 +34,32 @@ body {
 
 #login-panel-one {
   position: relative;
-  background-image: url('http://iliketowastemytime.com/sites/default/files/orsos-floating-mobile-island1.jpg');
+  background-image: url('http://www.charterworld.com/images/yachts/SILENCIO%20-%20%20Aft%20Deck%20at%20Night.jpg');
+  background-imagez: url('http://iliketowastemytime.com/sites/default/files/orsos-floating-mobile-island1.jpg');
   height: 600px;
   background-size: cover;
+  * {
+    color: white;
+  }
 }
 
-#login-panel-one * {
-  color:white;
-}
 #login-start {
   position: absolute;
   width:100%;
   display:block;
   bottom: 0;
   color: white;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.7);
   padding: 30px;
-}
-
-#login-start > a {
-  padding: 20px;
-  border-radius: 10px;
-  background-color: #ff5a5f;
-  color: white;
-  font-size: 1.5em;
-  text-decoration: none;
+  #guest-login-btn {
+    border:none;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #ff5a5f;
+    color: white;
+    font-size: 1.5em;
+    text-decoration: none;
+  }
 }
 
 #login-panel-two {
@@ -65,7 +67,29 @@ body {
   color: #565a5c;
 }
 
+#welcome {
+  position: relative;
+  top: 20%;
+  span {
+    font-size: 4em;
+    font-weight: 600;
+  }
+}
+
+.header {
+  padding: 30px 20px;
+  a {
+    margin: auto 10px;
+    position: relative;
+    text-decoration: none;
+  }
+}
+
 .login-field {
   margin: 5px;
+  font-size: 1.5em;
+}
+
+.logo {
   font-size: 1.5em;
 }

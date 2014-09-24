@@ -1,8 +1,9 @@
 <div id="login-panel-one">
-  <div style="position:relative;">
-    <h2 style="margin:0;float:left">(LOGO) sailbnb</h2>
-    <a style="float:right">Login</a>
-    <a style="float:right">Sign Up</a>
+  <div class="header">
+    <a href="<%= root_url %>" class="logo">(LOGO) sailbnb</span>
+    <a href="javascript:void(0)" class="pull-right">Help</a>
+    <a href="javascript:void(0)" class="pull-right">Login</a>
+    <a href="javascript:void(0)" class="pull-right">Sign Up</a>
   </div>
   <div id="login-form" class="row" style="display:none">
     <form action="<%= session_url %>" method="post" class="col-md-10 col-md-offset-1">
@@ -34,11 +35,25 @@
     </form>
     <a href="<%= new_user_url %>">Register as new user!</a>
   </div>
+  <div id="welcome" class="text-center">
+    <span class="text-uppercase">Welcome Aboard!</span>
+    <p>Rent unique ships to sail from local hosts in San Francisco.</p>
+  </div>
   <div id="login-start" class="text-center">
-    <a href='#'>Guest Login</a>
+    <form action="<%= session_url %>" method="post">
+      <input 
+        type="hidden" 
+        name="authenticity_token" 
+        id="" 
+        value="<%= form_authenticity_token %>" 
+      />
+      <input type="hidden" name="user[email]" value="guest" />
+      <input type="hidden" name="user[password]" value="apples" />
+      <input id="guest-login-btn"type="submit" value="Guest Login" />
+    </form>
   </div>
 </div>
 <div id="login-panel-two">
-  <h2 style="margin-bottom:5px;"class="text-center">Start Your Adventure</h2>
+  <h2 style="margin-bottom:5px;font-weight:bold;"class="text-center">Start Your Adventure</h2>
   <p class="text-center">Explore the oceans that seafarers love.</p>
 </div>
