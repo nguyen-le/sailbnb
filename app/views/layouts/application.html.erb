@@ -8,9 +8,9 @@
 </head>
 <body>
 
-<% if flash.notice %>
+<% if flash[:notices] %>
   <ul>
-  <% flash.notice.each do |notice| %>
+  <% flash[:notices].each do |notice| %>
     <li><%= notice %></li>
   <% end %>
   </ul>

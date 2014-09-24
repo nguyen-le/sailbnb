@@ -4,6 +4,8 @@ window.WaterBnb = {
   Views: {},
   Routers: {},
   initialize: function() {
+      new WaterBnb.Routers.Router({ $rootEl: $('#container') });
+      Backbone.history.start();
   }
 };
 

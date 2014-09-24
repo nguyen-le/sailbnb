@@ -9,11 +9,11 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      flash[:notice] = ["User was successfully created."]
+      flash[:notices] = ["User was successfully created."]
       login!(@user)
       redirect_to root_url
     else
-      flash[:notice] = @user.errors.full_messages
+      flash.now[:notices] = @user.errors.full_messages
       @user = User.new(user_params)
       render :new
     end

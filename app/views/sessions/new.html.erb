@@ -1,23 +1,32 @@
-    <div id="login-form" >
-      <h2>Logo</h2>
-      <form action="<%= session_url %>" method="post">
-        <input 
-          type="hidden" 
-          name="authenticity_token" 
-          id="" 
-          value="<%= form_authenticity_token %>" 
-        />
-        <div>
-          Email:
-          <input type="text" name="user[email]" id="" value="" />
-        </div>
-        <div>
-          Password:
-          <input type="password" name="user[password]" id="" value="" />
-        </div>
-        <h3><input type="submit" name="" id="" value="Sign In" /></h3>
-        <h3>Guest Login</h3>
-      </form>
-      <hr />
-      <a href="<%= new_user_url %>">Register as new user!</a>
+<div id="login-form" class="row">
+  <h2>Logo</h2>
+  <form action="<%= session_url %>" method="post" class="col-md-10 col-md-offset-1">
+    <input 
+      type="hidden" 
+      name="authenticity_token" 
+      id="" 
+      value="<%= form_authenticity_token %>" 
+    />
+    <div>
+      <input 
+        type="text" 
+        placeholder="Email" 
+        name="user[email]" 
+        class="login-field" 
+        value="<%= @user.email %>" 
+      />
     </div>
+    <div>
+      <input 
+        type="password" 
+        placeholder="Password" 
+        name="user[password]" 
+        class="login-field" 
+      />
+    </div>
+    <input type="submit" class="login-field" value="Sign In" />
+    <p class="login-field">Guest Login</p>
+  </form>
+  <hr />
+  <a href="<%= new_user_url %>">Register as new user!</a>
+</div>
