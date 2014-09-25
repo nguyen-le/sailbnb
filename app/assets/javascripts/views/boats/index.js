@@ -8,16 +8,13 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
     render: function() {
         var content = this.template({ boats: this.collection });
         this.$el.html(content);
-				this.attachSubviews();
+            this.attachSubviews();
         return this;
     },
-    indexItemView: function(model) {
-        //var view = new WaterBnb.Views.IndexItemView({ model: model });
-        //this.subviews.push(view)
-        //$('.subview-space').append(view.render().$el);
-    },
     addItem: function(model) {
-        var view = new WaterBnb.Views.IndexItem({ model: model });
+        console.log(model.id);
+        var boat = WaterBnb.boats.getOrFetch(model.id);
+        var view = new WaterBnb.Views.IndexItem({ model: boat });
         this.addSubview( '.display-area', view);
     }
 });
