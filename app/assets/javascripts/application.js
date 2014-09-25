@@ -16,6 +16,7 @@
 //= require bootstrap
 //= require underscore
 //= require backbone
+//= require backbone.bootstrap-modal
 //= require water_bnb
 //= require_tree ../templates
 //= require_tree ./utils

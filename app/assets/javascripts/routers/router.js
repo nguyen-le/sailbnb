@@ -5,11 +5,22 @@ WaterBnb.Routers.Router = Backbone.Router.extend({
     },
     routes: {
         '' : 'index',
+        'boats/new' : 'new',
+        'boats/:id' : 'show',
     },
     index: function () {
         WaterBnb.boats.fetch();
         var view = new WaterBnb.Views.BoatsIndex({
             collection: WaterBnb.boats
+        });
+        this._swapView(view);
+    },
+    new: function () {
+    },
+    show: function (id) {
+        var boat = WaterBnb.boats.getOrFetch(id);
+        var view = new WaterBnb.Views.BoatShow({
+            model: boat
         });
         this._swapView(view);
     },

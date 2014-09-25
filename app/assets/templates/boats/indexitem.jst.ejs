@@ -1,2 +1,5 @@
-<h4><%= boat.escape("name") %></h4>
+<h4><a href="#/boats/<%= boat.id %>"><%= boat.escape("name") %></a></h4>
 <p><%= boat.owner().get('f_name') %></p>
+<p><%= boat.get('price') %></p>
+<p><%= boat.get('size') %></p>
+<p><%= boat.get('type') %></p>
