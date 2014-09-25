@@ -16,6 +16,9 @@ WaterBnb.Routers.Router = Backbone.Router.extend({
         this._swapView(view);
     },
     new: function () {
+        var boat = new WaterBnb.Models.Boat();
+        var view = new WaterBnb.Views.BoatNew({ model: boat });
+        this._swapView(view);
     },
     show: function (id) {
         var boat = WaterBnb.boats.getOrFetch(id);
@@ -33,13 +36,11 @@ WaterBnb.Routers.Router = Backbone.Router.extend({
         var $navbar = $('.navbar-right');
         var $li = $('<li>');
         var $a = $('<a id=list-boat href=javascript:void(0)>');
-        $a.html("List your yacht");
+        $a.html("List my yacht");
         $li.html($a);
         $navbar.append($li);
         $a.on("click", function() {
-            var boat = new WaterBnb.Models.Boat();
-            var view = new WaterBnb.Views.BoatNew({ model: boat });
-            var modal = new Backbone.BootstrapModal({ content: view }).open();
+            Backbone.history.navigate("#/boats/new", { trigger: true });
         });
     }
 });
