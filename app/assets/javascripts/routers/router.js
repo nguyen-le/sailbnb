@@ -32,15 +32,13 @@ WaterBnb.Routers.Router = Backbone.Router.extend({
     navbar: function() {
         var $navbar = $('.navbar-right');
         var $li = $('<li>');
-        var $a = $('<a>');
-        $a.attr('id', 'list-boat');
-        $a.attr('href', 'javascript:void(0)');
+        var $a = $('<a id=list-boat href=javascript:void(0)>');
         $a.html("List your yacht");
         $li.html($a);
         $navbar.append($li);
         $a.on("click", function() {
-            var boat  = new WaterBnb.Models.Boat();
-            var view  = new WaterBnb.Views.BoatNew({ model: boat });
+            var boat = new WaterBnb.Models.Boat();
+            var view = new WaterBnb.Views.BoatNew({ model: boat });
             var modal = new Backbone.BootstrapModal({ content: view }).open();
         });
     }

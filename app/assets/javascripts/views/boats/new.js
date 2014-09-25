@@ -1,4 +1,4 @@
-WaterBnb.Views.BoatEdit = Backbone.CompositeView.extend({
+WaterBnb.Views.BoatNew = Backbone.CompositeView.extend({
     template: JST["boats/new"],
     initialize: function() {
     },
