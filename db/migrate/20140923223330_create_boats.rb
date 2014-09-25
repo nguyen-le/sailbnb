@@ -7,7 +7,7 @@ class CreateBoats < ActiveRecord::Migration
       t.text :description
       t.integer :price, null: false
       t.integer :size, null: false
-      t.integer :owner_id, null: false
+      t.integer :user_id, null: false
 
       t.timestamps
     end
@@ -16,7 +16,7 @@ class CreateBoats < ActiveRecord::Migration
     add_index :boats, :size
     add_index :boats, :style
     add_index :boats, :name
-    add_index :boats, :owner_id
+    add_index :boats, :user_id
 
   end
 end

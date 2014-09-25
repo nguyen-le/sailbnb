@@ -6,7 +6,7 @@ module Api
     end
 
     def create
-      @boat = Boat.new(boat_params)
+      @boat = current_user.boats.build(boat_params)
 
       if @boat.save
         flash[:notice] = ['Boat was successfully created.']
@@ -30,7 +30,7 @@ module Api
 
     def boat_params
       params.require(:boat).permit(
-        :name, :location,:type, :description, :price, :size
+        :name, :location,:style, :description, :price, :size 
       )
     end
   end

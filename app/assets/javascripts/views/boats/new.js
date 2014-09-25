@@ -4,21 +4,32 @@ WaterBnb.Views.BoatNew = Backbone.CompositeView.extend({
     initialize: function() {
     },
     events: {
-        "submit form" : "evCreateBoat",
+        "submit form" : "createBoat",
+        "click .fp-upload" : "uploadimg",
     },
-    evCreateBoat: function() {
+    createBoat: function() {
         event.preventDefault();
         var attrs = $(event.target).serializeJSON();
         this.model.set(attrs);
-        WaterBnb.boats.create( this.model, {
+        WaterBnb.boats.create(this.model, {
             success: function() {
-                 Backbone.history.navigate("#/boats/"+this.model.id, { trigger: true });
-            },
+                 Backbone.history.navigate(
+                     "#/boats/" + this.model.id,
+                     { trigger: true }
+                 );
+            }.bind(this),
+            wait: true,
             error: function(resp) {
                 console.log(resp);
             }
         });
-        alert("submitting");
+    },
+    uploadimg: function () {
+        filepicker.pickMultiple(
+            function(Blobs){
+                console.log(JSON.stringify(Blobs));
+            }
+        );
     },
     render: function() {
         var content = this.template({ boat: this.model });

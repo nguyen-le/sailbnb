@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }, allow_nil: true
   after_initialize :ensure_session_token
 
-  has_many :properties
+  has_many :boats
 
   def self.generate_token
     SecureRandom.urlsafe_base64
