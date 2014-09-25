@@ -21,5 +21,5 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
         var boat = WaterBnb.boats.getOrFetch(model.id);
         var view = new WaterBnb.Views.IndexItem({ model: boat });
         this.addSubview( '.display-area', view);
-    }
+    },
 });
