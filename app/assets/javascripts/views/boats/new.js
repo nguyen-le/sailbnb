@@ -8,6 +8,16 @@ WaterBnb.Views.BoatNew = Backbone.CompositeView.extend({
     },
     evCreateBoat: function() {
         event.preventDefault();
+        var attrs = $(event.target).serializeJSON();
+        this.model.set(attrs);
+        WaterBnb.boats.create( this.model, {
+            success: function() {
+                 Backbone.history.navigate("#/boats/"+this.model.id, { trigger: true });
+            },
+            error: function(resp) {
+                console.log(resp);
+            }
+        });
         alert("submitting");
     },
     render: function() {

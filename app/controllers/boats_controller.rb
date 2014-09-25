@@ -8,13 +8,11 @@ module Api
     def create
       @boat = Boat.new(boat_params)
 
-      respond_to do |format|
-        if @boat.save
-          flash[:notice] = ['Boat was successfully created.']
-          render json: @boat
-        else
-          render json: @boat.errors, status: :unprocessable_entity
-        end
+      if @boat.save
+        flash[:notice] = ['Boat was successfully created.']
+        render json: @boat
+      else
+        render json: @boat.errors, status: :unprocessable_entity
       end
     end
 

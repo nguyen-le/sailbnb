@@ -11,54 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140925161802) do
+ActiveRecord::Schema.define(version: 0) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "boat_images", force: true do |t|
-    t.integer  "boat_id"
-    t.string   "filepicker_url"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "boat_images", ["boat_id"], name: "index_boat_images_on_boat_id", using: :btree
-
-  create_table "boats", force: true do |t|
-    t.string   "name",        null: false
-    t.string   "location",    null: false
-    t.string   "type"
-    t.text     "description"
-    t.integer  "price",       null: false
-    t.integer  "size",        null: false
-    t.integer  "owner_id",    null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "boats", ["name"], name: "index_boats_on_name", using: :btree
-  add_index "boats", ["owner_id"], name: "index_boats_on_owner_id", using: :btree
-  add_index "boats", ["price"], name: "index_boats_on_price", using: :btree
-  add_index "boats", ["size"], name: "index_boats_on_size", using: :btree
-  add_index "boats", ["type"], name: "index_boats_on_type", using: :btree
-
-  create_table "users", force: true do |t|
-    t.string   "f_name",          null: false
-    t.string   "l_name",          null: false
-    t.string   "nickname"
-    t.string   "email",           null: false
-    t.string   "location"
-    t.string   "slogan"
-    t.text     "intro"
-    t.string   "work"
-    t.string   "password_digest", null: false
-    t.string   "session_token",   null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["session_token"], name: "index_users_on_session_token", using: :btree
 
 end

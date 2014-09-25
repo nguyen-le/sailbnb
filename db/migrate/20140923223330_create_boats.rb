@@ -3,7 +3,7 @@ class CreateBoats < ActiveRecord::Migration
     create_table :boats do |t|
       t.string :name, null: false
       t.string :location, null: false
-      t.string :type
+      t.string :style
       t.text :description
       t.integer :price, null: false
       t.integer :size, null: false
@@ -14,7 +14,7 @@ class CreateBoats < ActiveRecord::Migration
 
     add_index :boats, :price
     add_index :boats, :size
-    add_index :boats, :type
+    add_index :boats, :style
     add_index :boats, :name
     add_index :boats, :owner_id
 
