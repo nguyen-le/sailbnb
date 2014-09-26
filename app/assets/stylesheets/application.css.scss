@@ -134,6 +134,10 @@ body {
   text-shadow: 1px 1px 2px #777, 0px 0px 50px black;
 }
 
+.boat-price {
+  background-color: charcoal;
+}
+
 .header {
   padding: 30px 20px;
   a {
@@ -156,7 +160,8 @@ body {
     .boat-img {
       height:100%;
       width:100%;
-      min-width: 265px;
+      min-height: 300px;
+      min-width: 330px;
     }
 }
 

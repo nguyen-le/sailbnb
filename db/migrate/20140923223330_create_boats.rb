@@ -3,8 +3,8 @@ class CreateBoats < ActiveRecord::Migration
     create_table :boats do |t|
       t.string :name, null: false
       t.string :location, null: false
-      t.string :style
       t.text :description
+      t.string :style
       t.integer :price, null: false
       t.integer :size, null: false
       t.integer :user_id, null: false
