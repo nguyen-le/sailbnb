@@ -144,6 +144,8 @@ body {
 }
 
 .index-item {
+  min-width: 300px;
+  max-width: 100%;
   margin:1%;
   display: inline-block;
     .index-image {
