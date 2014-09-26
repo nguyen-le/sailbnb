@@ -17,8 +17,7 @@ module Api
 
     def index
       @boats = Boat.includes(:owner, :images).all
-      #render :index
-      render json: @boats, include: [:owner, :images]
+      render :index
     end
 
     def show

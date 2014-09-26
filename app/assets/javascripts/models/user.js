@@ -3,11 +3,12 @@ WaterBnb.Models.User = Backbone.Model.extend({
     initialize: function(model, options) {
     },
     boats: function() {
-        if (!this._images) {
+        if (!this._boats) {
             this._boats = new WaterBnb.Collections.Boats([], {
                 owner: this
             });
         }
+        return this._boats;
     },
     parse: function(resp) {
         if (resp.boats) {

@@ -1,4 +1,1 @@
-json.extract!(@boat, :name, :location, :style, :description, :price, :size)
-json.owner @boat.owner, :id, :f_name, :l_name, :nickname, :email,
-  :location, :slogan, :intro, :work
-json.images @boat.images, :boat_id, :filepicker_url
+json.partial!("api/boats/boat", boat: @boat)
