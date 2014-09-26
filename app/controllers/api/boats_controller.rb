@@ -16,13 +16,14 @@ module Api
     end
 
     def index
-      @boats = Boat.all
-      render json: @boats
+      @boats = Boat.includes(:owner, :images).all
+      #render :index
+      render json: @boats, include: [:owner, :images]
     end
 
     def show
       @boat = Boat.includes(:owner, :images).find(params[:id])
-      render json: @boat
+      render :show
     end
     private
 

@@ -5,6 +5,6 @@
 <p><%= boat.escape('description') %></p>
 <p><%= boat.escape('price') %></p>
 <p><%= boat.escape('size') %></p>
-<% boat.images().each( function(image) { %>
-  <h5><%= image %></h5>
+<% boat.images().models.forEach( function(image) { %>
+  <h5><%= image.get('filepicker_url') %></h5>
 <% } ) %>

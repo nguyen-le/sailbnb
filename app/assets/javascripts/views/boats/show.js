@@ -1,7 +1,9 @@
 WaterBnb.Views.BoatShow = Backbone.CompositeView.extend({
     template: JST["boats/show"],
     initialize: function() {
+        this.collection = this.model.images();
         this.listenTo( this.model, 'sync', this.render );
+        this.listenTo( this.collection, 'add', this.render );
     },
     events: {
         "click .fp-upload" : "uploadimg",
@@ -16,11 +18,10 @@ WaterBnb.Views.BoatShow = Backbone.CompositeView.extend({
         filepicker.pickMultiple(
             function(Blobs){
             var image = new WaterBnb.Models.Image();
-            image.set({
+            that.collection.create({
                 boat_id: that.model.id,
                 filepicker_url: Blobs[0].url
             });
-            image.save();
             }
         );
     },

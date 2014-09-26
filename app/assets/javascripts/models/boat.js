@@ -8,7 +8,7 @@ WaterBnb.Models.Boat = Backbone.Model.extend({
     },
     images: function() {
         if (!this._images) {
-            this._images = new WaterBnb.Collections.Images({ boat: this });
+            this._images = new WaterBnb.Collections.Images([], { boat: this });
         }
         return this._images;
     },
