@@ -1,15 +1,15 @@
 <a class="index-image float" style="background-image:url();" href="#/boats/<%= boat.id %>">
   <div class="item-info">
     <img class="boat-img" src="<%= boat.images().models[0].get('filepicker_url') %>" alt="boat_image" />
-    <div class="boat-price">
-      Price:<%= boat.escape('price') %>
-    </div>
+    <span class="boat-price">
+      <span>$</span><%= boat.escape('price') %>
+    </span>
   </div>
   <div class="info">
-  </div>
   <h4>Name:<%= boat.escape("name") %></h4>
   <p>Size:<%= boat.get('size') %></p>
   <p>Style:<%= boat.get('style') %></p>
+  </div>
 </a>
 <a href="#" style="float:right;position:absolute;bottom:20%;right:30px;"><%= boat.owner().get('f_name') %>
   <img src="" alt="user_image" />
