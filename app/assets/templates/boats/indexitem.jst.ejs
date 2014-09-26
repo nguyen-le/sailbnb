@@ -6,11 +6,11 @@
     </span>
   </div>
   <div class="info">
-  <h4>Name:<%= boat.escape("name") %></h4>
-  <p>Size:<%= boat.get('size') %></p>
-  <p>Style:<%= boat.get('style') %></p>
+    <span class="boat-name"><%= boat.escape("name") %></span>
+    <span class="boat-size">Size:<%= boat.get('size') %></span>
+    <span class="boat-style">Style:<%= boat.get('style') %></span>
   </div>
 </a>
-<a href="#" style="float:right;position:absolute;bottom:20%;right:30px;"><%= boat.owner().get('f_name') %>
-  <img src="" alt="user_image" />
+<a class="boat-owner" href="#">
+  <img class="boat-owner-img" src="<%= boat.owner().get('image_url') %>" alt="user_image" />
 </a>

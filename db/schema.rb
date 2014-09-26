@@ -20,18 +20,15 @@ ActiveRecord::Schema.define(version: 20140925161802) do
     t.string   "name",        null: false
     t.string   "location",    null: false
     t.text     "description"
-    t.string   "style"
+    t.string   "style",       null: false
+    t.string   "size",        null: false
     t.integer  "price",       null: false
-    t.integer  "size",        null: false
     t.integer  "user_id",     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "boats", ["name"], name: "index_boats_on_name", using: :btree
   add_index "boats", ["price"], name: "index_boats_on_price", using: :btree
-  add_index "boats", ["size"], name: "index_boats_on_size", using: :btree
-  add_index "boats", ["style"], name: "index_boats_on_style", using: :btree
   add_index "boats", ["user_id"], name: "index_boats_on_user_id", using: :btree
 
   create_table "images", force: true do |t|
@@ -54,6 +51,7 @@ ActiveRecord::Schema.define(version: 20140925161802) do
     t.string   "work"
     t.string   "password_digest", null: false
     t.string   "session_token",   null: false
+    t.string   "image_url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

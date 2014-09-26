@@ -11,6 +11,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :work
       t.string :password_digest, null: false
       t.string :session_token, null: false
+      t.string :image_url
 
       t.timestamps
     end

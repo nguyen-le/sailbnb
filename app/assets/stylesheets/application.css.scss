@@ -149,6 +149,20 @@ body {
   }
 }
 
+.boat-owner {
+  float: right;
+  position: absolute;
+  bottom: 55px;
+  right: 25px;
+}
+.boat-owner-img {
+  margin-right: 0;
+  height:100px;
+  width: 100px;
+  border-radius: 50px;
+  border: 3px solid white;
+}
+
 .header {
   padding: 30px 20px;
   a {
@@ -159,6 +173,8 @@ body {
 }
 
 .index-list {
+  position:relative;
+  padding: 1%;
   list-style: none;
   height:100%;
     .index-image {
