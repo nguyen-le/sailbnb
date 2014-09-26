@@ -134,32 +134,18 @@ body {
   text-shadow: 1px 1px 2px #777, 0px 0px 50px black;
 }
 
-.boat-price {
-  padding: 5px 15px;
-  position: absolute;
-  bottom: 130px;
-  background-color: rgba(50,50,50,0.8);
-  color: white;
-  font-size: 1.75em;
-  span {
-    position: relative;
-    top: -7px;
-    left: -2px;
-    font-size: 0.6em;
-  }
-}
 
 .boat-owner {
   float: right;
   position: absolute;
-  bottom: 55px;
+  bottom: 10px;
   right: 25px;
 }
 .boat-owner-img {
   margin-right: 0;
-  height:100px;
-  width: 100px;
-  border-radius: 50px;
+  height:90px;
+  width: 90px;
+  border-radius: 45px;
   border: 3px solid white;
 }
 
@@ -177,19 +163,42 @@ body {
   padding: 1%;
   list-style: none;
   height:100%;
-    .index-image {
-      text-decoration: none;
-      display:inline-block;
-      background-size:100% 100%;
-     zheight:80%;
-     zwidth:100%;
+  box-shadow: 2px 2px 3px rgba(200,200,200,0.5);
+  margin-bottom: 8px;
+  .index-image {
+    text-decoration: none;
+    display:inline-block;
+    background-size:100% 100%;
+    .boat-top {
+      .boat-img {
+        height:100%;
+        width:100%;
+        min-height: 300px;
+        min-width: 330px;
+      }
+      .boat-price {
+        padding: 5px 15px;
+        position: absolute;
+        bottom: 130px;
+        background-color: rgba(50,50,50,0.8);
+        color: white;
+        font-size: 1.75em;
+        span {
+          position: relative;
+          top: -7px;
+          left: -2px;
+          font-size: 0.6em;
+        }
+      }
+    }/*top-end*/
+    .boat-bottom {
+      padding: 10px 0px 0px 10px;
+      .boat-name {
+        font-size: 1.5em;
+        color: black;
+      }
     }
-    .boat-img {
-      height:100%;
-      width:100%;
-      min-height: 300px;
-      min-width: 330px;
-    }
+  }
 }
 
 .login-field {
@@ -217,7 +226,7 @@ body {
   width: 60%;
   min-height: 100%;
   float: right;
-  padding-left: 20px;
+  zpadding-left: 20px;
   padding-top: 20px;
   box-shadow: 0px -10px 10px rgba(0,0,0,0.1);
   form {

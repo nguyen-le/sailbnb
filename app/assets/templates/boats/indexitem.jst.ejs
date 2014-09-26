@@ -1,11 +1,11 @@
-<a class="index-image float" style="background-image:url();" href="#/boats/<%= boat.id %>">
-  <div class="item-info">
+<a class="index-image" style="background-image:url();" href="#/boats/<%= boat.id %>">
+  <div class="boat-top">
     <img class="boat-img" src="<%= boat.images().models[0].get('filepicker_url') %>" alt="boat_image" />
     <span class="boat-price">
       <span>$</span><%= boat.escape('price') %>
     </span>
   </div>
-  <div class="info">
+  <div class="boat-bottom">
     <span class="boat-name"><%= boat.escape("name") %></span>
     <span class="boat-size">Size:<%= boat.get('size') %></span>
     <span class="boat-style">Style:<%= boat.get('style') %></span>
