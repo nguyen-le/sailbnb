@@ -16,15 +16,6 @@ ActiveRecord::Schema.define(version: 20140925161802) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "boat_images", force: true do |t|
-    t.integer  "boat_id"
-    t.string   "filepicker_url"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "boat_images", ["boat_id"], name: "index_boat_images_on_boat_id", using: :btree
-
   create_table "boats", force: true do |t|
     t.string   "name",        null: false
     t.string   "location",    null: false
@@ -42,6 +33,15 @@ ActiveRecord::Schema.define(version: 20140925161802) do
   add_index "boats", ["size"], name: "index_boats_on_size", using: :btree
   add_index "boats", ["style"], name: "index_boats_on_style", using: :btree
   add_index "boats", ["user_id"], name: "index_boats_on_user_id", using: :btree
+
+  create_table "images", force: true do |t|
+    t.integer  "boat_id"
+    t.string   "filepicker_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "images", ["boat_id"], name: "index_images_on_boat_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "f_name",          null: false

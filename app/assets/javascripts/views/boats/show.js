@@ -12,9 +12,14 @@ WaterBnb.Views.BoatShow = Backbone.CompositeView.extend({
         return this;
     },
     uploadimg: function () {
+        var that = this;
         filepicker.pickMultiple(
             function(Blobs){
+            debugger;
+                console.log(Blobs);
+                console.log(Blobs.url);
                 console.log(JSON.stringify(Blobs));
+                console.log(JSON.stringify());
             }
         );
     },

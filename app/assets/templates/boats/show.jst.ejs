@@ -1,2 +1,10 @@
 <h1><%= boat.escape('name') %></h1>
 <a class="fp-upload" href="javascript:void(0)">Upload Picture</a>
+<p><%= boat.escape('location') %></p>
+<p><%= boat.escape('style') %></p>
+<p><%= boat.escape('description') %></p>
+<p><%= boat.escape('price') %></p>
+<p><%= boat.escape('size') %></p>
+<% _(boat.images()).each( function(image) { %>
+  <h5><%= image %></h5>
+<% } ) %>
