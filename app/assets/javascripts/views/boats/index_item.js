@@ -1,5 +1,6 @@
 WaterBnb.Views.IndexItem = Backbone.CompositeView.extend({
-    className: "index-item",
+    tagName: "li",
+    className: "index-list col-md-6",
     template: JST["boats/indexitem"],
     initialize: function() {
         this.listenTo( this.model, 'sync', this.render );
