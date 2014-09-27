@@ -194,7 +194,18 @@ body {
     .boat-bottom {
       padding: 10px 0px 0px 10px;
       .boat-name {
-        font-size: 1.5em;
+        font-size: 1.6em;
+        font-variant:small-caps;
+        font-weight: 600;
+        color: black;
+      }
+      .boat-style {
+        color: gray;
+      }
+      .boat-size {
+        color: gray;
+      }
+      .boat-tagline {
         color: black;
       }
     }
