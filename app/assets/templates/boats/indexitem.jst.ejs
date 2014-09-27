@@ -7,8 +7,10 @@
   </div>
   <div class="boat-bottom">
     <span class="boat-name"><%= boat.escape("name") %></span>
-    <span class="boat-size">Size:<%= boat.get('size') %></span>
-    <span class="boat-style">Style:<%= boat.get('style') %></span>
+    <span class="boat-style"><%= boat.get('style') %></span>
+    <span class="boat-size">Fits: <%= boat.get('size') %></span>
+    <br />
+    <span class="boat-tagline"><%= boat.get('tagline') %></span>
   </div>
 </a>
 <a class="boat-owner" href="#">

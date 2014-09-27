@@ -9,18 +9,18 @@ ActiveRecord::Base.transaction do
   User.create( f_name: 'Guest', l_name:'Guester', email: 'guest', password: 'apples')
   User.create( f_name: 'John', l_name:'Doe', email: 'johndoe', password: 'apples')
   User.create( f_name: 'Jane', l_name:'Doe', email: 'janedoe', password: 'apples')
-  b1 = Boat.new( name: 'Popeye', location: 'SF', price: '100', style: 'cruiser', size: '3', user_id: 1)
+  b1 = Boat.new( name: 'Popeye', location: 'SF', price: '100', style: 'cruiser', size: '3', user_id: 1, tagline: 'A small boat')
   b1.images.build(filepicker_url: 'https://www.filepicker.io/api/file/4qd0BKblSyet17bAINNp')
   b1.save!
-  b2 = Boat.new( name: 'Trails', location: 'SF', price: '100', style: 'cruiser', size: '3', user_id: 2)
+  b2 = Boat.new( name: 'Trails', location: 'SF', price: '100', style: 'cruiser', size: '3', user_id: 2, tagline: 'Trailing through sf')
   #white yacht
   b2.images.build(filepicker_url: 'https://www.filepicker.io/api/file/z6cSwAMS9KtMUwIWtkAb')
   b2.save!
-  b3 = Boat.new( name: 'Bikester', location: 'SF', price: '600', style: 'cruiser', size: '6', user_id: 3)
+  b3 = Boat.new( name: 'Bikester', location: 'SF', price: '600', style: 'cruiser', size: '6', user_id: 3, tagline: 'biking on the ocean')
   #black boat
   b3.images.build(filepicker_url: 'https://www.filepicker.io/api/file/b7QQvsqpR8iSMpK8Z3D4')
   b3.save!
-  b4 = Boat.new( name: 'Motorboat', location: 'SF', price: '1000', style: 'cruiser', size: '10', user_id: 3)
+  b4 = Boat.new( name: 'Motorboat', location: 'SF', price: '1000', style: 'cruiser', size: '10', user_id: 3, tagline: 'the fastest thing around')
   #white yacht
   b4.images.build(filepicker_url: 'https://www.filepicker.io/api/file/IQBjaCTFqrYdt7MFo5DA')
   b4.save!
