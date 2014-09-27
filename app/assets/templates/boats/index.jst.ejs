@@ -1,6 +1,21 @@
 <div class="map">
-  <p>map</p>
-</div> 
+  <div id="map-canvas" style="width: 100%; height: 100%">
+    <style type="text/css">
+      html, body, #map-canvas { height: 100%; margin: 0; padding: 0;}
+    </style>
+    <script type="text/javascript">
+        function initialize() {
+          var mapOptions = {
+            center: { lat: -34.397, lng: 150.644},
+            zoom: 8
+          };
+          var map = new google.maps.Map(document.getElementById('map-canvas'),
+              mapOptions);
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+  </div>
+</div>
 <div class="search-area">
   <form>
     <div class="row">
@@ -22,7 +37,6 @@
       </div>
     </div>
     <hr />
-      
     <div class="row">
       <div class="col-xs-3">
         <label for="">Boat Type</label>

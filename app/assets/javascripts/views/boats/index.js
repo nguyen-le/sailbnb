@@ -10,6 +10,7 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
             }.bind(this) );
             this.render();
         }
+        this.renderMap();
     },
     render: function() {
         var content = this.template({ boats: this.collection });
@@ -22,4 +23,6 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
         var view = new WaterBnb.Views.IndexItem({ model: boat });
         this.addSubview( '.display-area', view);
     },
+    renderMap: function() {
+    }
 });
