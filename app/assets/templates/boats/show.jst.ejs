@@ -1,10 +1,36 @@
-<h1><%= boat.escape('name') %></h1>
-<a class="fp-upload" href="javascript:void(0)">Upload Picture</a>
-<p><%= boat.escape('location') %></p>
-<p><%= boat.escape('style') %></p>
-<p><%= boat.escape('description') %></p>
-<p><%= boat.escape('price') %></p>
-<p><%= boat.escape('size') %></p>
-<% boat.images().models.forEach( function(image) { %>
-  <h5><%= image.get('filepicker_url') %></h5>
-<% } ) %>
+<% if (boat.images().models[0]) { %>
+  <div id="boat-show-img-container">
+    <div id="boat-show-img" style="background-image:url(<%= boat.images().models[0].get('filepicker_url') %>)">
+      <div id="boat-show-price">
+      <span>$<%= boat.escape('price') %></span>
+      <span>per night</span>
+      </div>
+    </div>
+  </div>
+<% } %>
+<div id="boat-show-info" class="container">
+<div class="row">
+  <div class="col-sm-3 text-center">
+    <div>
+      <img id="boat-show-owner"src="<%= boat.owner().get('image_url') %>" alt="" />
+    </div>
+  <div class="text-center">
+    <%= boat.owner().get('f_name') %>
+  </div>
+  </div>
+<div class="col-sm-9">
+  
+  <h1><%= boat.escape('name') %></h1>
+  <a class="fp-upload" href="javascript:void(0)">Upload Picture</a>
+  <p><%= boat.escape('location') %></p>
+  <p><%= boat.escape('style') %></p>
+  <p><%= boat.escape('description') %></p>
+  <p><%= boat.escape('price') %></p>
+  <p><%= boat.escape('size') %></p>
+  <% boat.images().models.forEach( function(image) { %>
+    <h5><%= image.get('filepicker_url') %></h5>
+  <% } ) %>
+</div>
+  
+</div>
+</div>

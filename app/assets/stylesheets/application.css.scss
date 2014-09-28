@@ -21,6 +21,51 @@ body {
   font-family: 'open sans', Circular, 'helvetica neue', helvetica;
 }
 
+z.navbar-brand {
+  img:hover {
+    transform: rotateZ(36000deg) rotateY(10800deg);
+    transition: 40s in-out;
+  }
+}
+z#logout-btn:hover {
+  transform: rotateX(3600deg) rotateY(3600deg) rotateZ(360deg);
+  transition: 3s;
+}
+#boat-show-img-container {
+  background-color: rgb(240,240,240);
+  #boat-show-img {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80vw;
+    height: 75vh;
+    background-size: cover;
+    #boat-show-price {
+      position: absolute;
+      right: 15%;
+      bottom: 0;
+      background-color: rgba(50,50,50,0.8);
+      padding: 5px 15px;
+      color: white;
+      > span:first-child {
+        font-size: 1.5em;
+      }
+      span:nth-child(2) {
+        margin-left: 50px;
+      }
+    }
+  }
+}
+
+#boat-show-info {
+  padding-top: 20px;
+  #boat-show-owner {
+    margin-bottom: 10px;
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+  }
+}
 #container {
   margin-top: 50px;
 }
