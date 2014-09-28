@@ -8,10 +8,23 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
            this.addItem(boat);
         }.bind(this) );
     },
+    events: {
+        "slide #search-price" : "updatePrice",
+    },
+    updatePrice: function (attribute) {
+        console.log("updating price");
+    },
     render: function() {
         var content = this.template({ boats: this.collection });
         this.$el.html(content);
         this.attachSubviews();
+        $('#search-price').slider({
+            animate: 'fast',
+            range: true,
+            min: 0,
+            max: 1000,
+            values: [0,1000]
+        });
         this.renderMap();
         return this;
     },
