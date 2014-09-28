@@ -12,7 +12,11 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
         "slide #search-price" : "updatePrice",
     },
     updatePrice: function (attribute) {
-        console.log("updating price");
+        $searchSlider = this.$searchArea.find('#search-price');
+        $priceMin = this.$searchArea.find('#price-min');
+        $priceMax = this.$searchArea.find('#price-max');
+        $priceMin.html('$' + $searchSlider.slider("values")[0]);
+        $priceMax.html('$' + $searchSlider.slider("values")[1]);
     },
     render: function() {
         var content = this.template({ boats: this.collection });
@@ -26,6 +30,7 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
             values: [0,1000]
         });
         this.renderMap();
+        this.$searchArea = $('#search-area');
         return this;
     },
     addItem: function(model) {
