@@ -40,6 +40,7 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
         filteredCollection.forEach( function(boat) {
            this.addItem(boat);
         }.bind(this) );
+        this.setMarkers(this.map, filteredCollection);
     },
     render: function() {
         var content = this.template({ boats: this.collection });
@@ -77,7 +78,30 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
             center: { lat: 37.4, lng: -122.5},
             zoom: 9
           };
-          var map = new google.maps.Map(this.$('#map-canvas')[0],
+          this.map = new google.maps.Map(this.$('#map-canvas')[0],
               mapOptions);
-    }
+					this.markers = [];
+          if (this.collection.length > 0) {
+              this.setMarkers(this.map, this.collection.models);
+          }
+          
+    },
+    clearMarkers: function() {
+        for (var i = 0; i < this.markers.length; i++) {
+            this.markers[i].setMap(null);
+        }
+    },
+    setMarkers: function(map, collection) {
+        this.clearMarkers();
+        this.markers = [];
+        for (var i = 0; i < collection.length; i++) {
+            boat = collection[i];
+            var myLatLng = new google.maps.LatLng(boat.get('lat'), boat.get('long'));
+            var marker = new google.maps.Marker({
+                position: myLatLng,
+                map: map,
+            });
+            this.markers.push(marker);
+        }
+    },
 });
