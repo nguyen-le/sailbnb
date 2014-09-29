@@ -12,26 +12,33 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
         "slide #search-price" : "updatePrice",
     },
     updatePrice: function (attribute) {
-        $searchSlider = this.$searchArea.find('#search-price');
-        $priceMin = this.$searchArea.find('#price-min');
-        $priceMax = this.$searchArea.find('#price-max');
-        $priceMin.html('$' + $searchSlider.slider("values")[0]);
-        $priceMax.html('$' + $searchSlider.slider("values")[1]);
+        this.$priceMin.html('$' + this.$searchSlider.slider("values")[0]);
+        this.$priceMax.html('$' + this.$searchSlider.slider("values")[1]);
     },
     render: function() {
         var content = this.template({ boats: this.collection });
         this.$el.html(content);
         this.attachSubviews();
-        $('#search-price').slider({
+        this.renderMap();
+        this.$searchArea = $('#search-area');
+        this.addFilters();
+        return this;
+    },
+    addFilters: function() {
+        this.$searchSlider = this.$searchArea.find('#search-price');
+        this.$dateStart = this.$searchArea.find('.date-start');
+        this.$dateStop = this.$searchArea.find('.date-stop');
+        this.$priceMin = this.$searchArea.find('#price-min');
+        this.$priceMax = this.$searchArea.find('#price-max');
+        this.$dateStart.datepicker();
+        this.$dateStop.datepicker();
+        this.$searchSlider.slider({
             animate: 'fast',
             range: true,
             min: 0,
             max: 1000,
             values: [0,1000]
         });
-        this.renderMap();
-        this.$searchArea = $('#search-area');
-        return this;
     },
     addItem: function(model) {
         var boat = WaterBnb.boats.getOrFetch(model.id);
