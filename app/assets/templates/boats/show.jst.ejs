@@ -1,6 +1,7 @@
 <% if (boat.images().models[0]) { %>
   <div id="boat-show-img-container">
-    <div id="boat-show-img" style="background-image:url(<%= boat.images().models[0].get('filepicker_url') %>)">
+  <% var i = boat.images().models %>
+    <div id="boat-show-img" style="background-image:url(<%= i[i.length - 1].get('filepicker_url') %>)">
       <div id="boat-show-price">
       <span>$<%= boat.escape('price') %></span>
       <span>per night</span>
