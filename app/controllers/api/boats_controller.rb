@@ -16,6 +16,12 @@ module Api
     end
 
     def index
+      #@boats = Boat.includes(:owner, :images).where(
+      #  size: boat-size,
+      #  dates: (date-start..date-stop)
+      #  price: (price-min..price-max),
+      #  style: ["style1", "style2", "style3"]
+      #)
       @boats = Boat.includes(:owner, :images).all
       render :index
     end
@@ -31,5 +37,6 @@ module Api
         :name, :location, :style, :description, :price, :size
       )
     end
+
   end
 end

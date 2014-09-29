@@ -3,30 +3,30 @@
   </div>
 </div>
 <div id="search-area">
-  <form>
+  <form id="search-form">
     <div class="row">
       <div class='col-xs-3'>
         <label for="">Dates</label>
       </div>
-      <div>
-        <input type="text" name="" class="date-start" placeholder="Check In" />
-        <input type="text" name="" class="date-stop" placeholder="Check Out" />
+      <div class='col-xs-9'>
+        <input class="col-xs-4 date-start" type="text" name="dateStart" placeholder="Check In" />
+        <input class="col-xs-4 date-stop"type="text" name="dateStop" placeholder="Check Out" />
       </div>
     </div>
     <hr />
 
-    <div class="row container">
+    <div class="row">
       <div class="col-xs-3">
         <label for="">Group Size</label>
       </div>
       <div class="col-xs-9">
         <label class="col-xs-4">
-          <input type="radio" name="size" id="" value="3" />
-          2-3
+          <input type="radio" name="size" id="" value="4" />
+          2-4
         </label>
         <label class="col-xs-4">
-          <input type="radio" name="size" id="" value="7" />
-          4-6
+          <input type="radio" name="size" id="" value="8" />
+          6-8 
         </label>
         <label class="col-xs-4">
           <input type="radio" name="size" id="" value="10" />
@@ -41,15 +41,15 @@
       </div>
       <div class="col-xs-9">
         <label class="col-xs-4">
-          <input type="checkbox" name="" id="" value="Sail" />
+          <input type="checkbox" name="style" id="" value="Sail" />
           Sail
         </label>
         <label class="col-xs-4">
-          <input type="checkbox" name="" id="" value="Budget" />
+          <input type="checkbox" name="style" id="" value="Budget" />
           Budget
         </label>
         <label class="col-xs-4">
-          <input type="checkbox" name="" id="" value="Luxury" />
+          <input type="checkbox" name="style" id="" value="Luxury" />
           Luxury
         </label>
       </div>
@@ -65,7 +65,7 @@
         </div>
         <div class="row">
           <span id="price-min">$0</span>
-          <span id="price-max">$1000</span>
+          <span id="price-max">$5000</span>
         </div>
       </div>
     </div>
