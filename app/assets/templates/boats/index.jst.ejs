@@ -1,10 +1,11 @@
 <div class="map">
   <div id="map-canvas">
+
   </div>
 </div>
 <div id="search-area">
   <form id="search-form">
-    <div class="row">
+    <!--<div class="row">
       <div class='col-xs-3'>
         <label for="">Dates</label>
       </div>
@@ -14,22 +15,23 @@
       </div>
     </div>
     <hr />
+    --!>
 
     <div class="row">
       <div class="col-xs-3">
         <label for="">Group Size</label>
       </div>
       <div class="col-xs-9">
-        <label class="col-xs-4">
-          <input type="radio" name="size" id="" value="4" />
+        <label class="col-xs-4 search-size">
+          <input type="radio" name="size" id="" value="4"/>
           2-4
         </label>
-        <label class="col-xs-4">
-          <input type="radio" name="size" id="" value="8" />
+        <label class="col-xs-4 search-size">
+          <input type="radio" name="size" id="" value="8"/>
           6-8 
         </label>
-        <label class="col-xs-4">
-          <input type="radio" name="size" id="" value="10" />
+        <label class="col-xs-4 search-size">
+          <input type="radio" name="size" id="" value="10"/>
           10+
         </label>
       </div>
@@ -40,16 +42,16 @@
         <label for="">Boat Type</label>
       </div>
       <div class="col-xs-9">
-        <label class="col-xs-4">
-          <input type="checkbox" name="style" id="" value="Sail" />
+        <label class="col-xs-4 search-style">
+          <input type="checkbox" name="styles[]" id="" value="Sail" checked="checked" />
           Sail
         </label>
-        <label class="col-xs-4">
-          <input type="checkbox" name="style" id="" value="Budget" />
+        <label class="col-xs-4 search-style">
+          <input type="checkbox" name="styles[]" id="" value="Budget" checked="checked"/>
           Budget
         </label>
-        <label class="col-xs-4">
-          <input type="checkbox" name="style" id="" value="Luxury" />
+        <label class="col-xs-4 search-style">
+          <input type="checkbox" name="styles[]" id="" value="Luxury" checked="checked"/>
           Luxury
         </label>
       </div>
@@ -65,7 +67,7 @@
         </div>
         <div class="row">
           <span id="price-min">$0</span>
-          <span id="price-max">$5000</span>
+          <span id="price-max">$5000+</span>
         </div>
       </div>
     </div>
@@ -77,3 +79,5 @@
     </ul>
   </div>
 </div>
+  <div id="map-cover" style="position:absolute;display:inline-block;background-color:rgba(0,0,0,0.3); height:100vh; width:100%">
+  </div>

@@ -10,14 +10,38 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
     },
     events: {
         "slide #search-price" : "updatePrice",
-        "slidestop #search-price" : "updatePrice",
+        "slidestop #search-price" : "updateFilter",
+        "click .search-style" : "updateFilter",
 
     },
-    updatePrice: function (attribute) {
-        this.$priceMin.html('$' + this.$searchSlider.slider("values")[0]);
-        this.$priceMax.html('$' + this.$searchSlider.slider("values")[1]);
+    updatePrice: function () {
+        this.priceArray = this.$searchSlider.slider("values");
+        this.$priceMin.html('$' + this.priceArray[0]);
+        if (this.priceArray[1] === 5000) {
+            this.$priceMax.html('$' + this.priceArray[1] + "+");
+        } else {
+            this.$priceMax.html('$' + this.priceArray[1]);
+        }
+    },
+    updateFilter: function() {
+        var details = $('#search-form').serializeJSON();
+        this.updatePrice();
+        filteredCollection = this.collection.filter( function(boat) {
+            return (
+                boat.get('price') >= this.priceArray[0] &&
+                boat.get('price') <= this.priceArray[1]
+                ) && (
+                _.include(details.styles, boat.get('style'))
+                );
+        }.bind(this));
+
+        this.removeSubviews(".display-area");
+        filteredCollection.forEach( function(boat) {
+           this.addItem(boat);
+        }.bind(this) );
     },
     render: function() {
+        //TODO: WaterBnb.boats.filter( function(boat) { return boat.get('price') < 0 || boat.get('style') === 'budget'  } )
         var content = this.template({ boats: this.collection });
         this.$el.html(content);
         this.attachSubviews();
@@ -44,7 +68,7 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
         });
     },
     addItem: function(model) {
-        var boat = WaterBnb.boats.getOrFetch(model.id);
+        var boat = this.collection.get(model.id);
         var view = new WaterBnb.Views.IndexItem({ model: boat });
         this.addSubview( '.display-area', view);
     },

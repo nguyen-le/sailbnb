@@ -17,15 +17,22 @@
 @import "bootstrap";
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:800,600,400);
 
+.ui-slider {
+  border: 5px solid blue;
+  box-shadow: 0px 0px 30px yellow;
+}
 body {
   font-family: 'open sans', helvetica;
   color: #555;
 }
 
 z.navbar-brand {
+  img {
+    transition: 40s;
+  }
   img:hover {
     transform: rotateZ(36000deg) rotateY(10800deg);
-    transition: 40s in-out;
+    transition: 1s ease-in-out;
   }
 }
 z#logout-btn:hover {
@@ -194,7 +201,11 @@ z#logout-btn:hover {
     .date-stop {
       margin-left: 20px;
     }
+    #search-price {
+      margin-left: 23px;
+    }
     #price-min {
+      margin-left: 35px;
       padding-top: 10px;
       float:left;
       position:relative;
