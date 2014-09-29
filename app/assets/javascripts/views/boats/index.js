@@ -12,7 +12,7 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
         "slide #search-price" : "updatePrice",
         "slidestop #search-price" : "updateFilter",
         "click .search-style" : "updateFilter",
-
+        "click .search-size" : "updateFilter"
     },
     updatePrice: function () {
         this.priceArray = this.$searchSlider.slider("values");
@@ -25,14 +25,15 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
     },
     updateFilter: function() {
         var details = $('#search-form').serializeJSON();
+        if (!details.size) {
+            details.size = ["4", "8", "10"];
+        }
         this.updatePrice();
         filteredCollection = this.collection.filter( function(boat) {
-            return (
-                boat.get('price') >= this.priceArray[0] &&
-                boat.get('price') <= this.priceArray[1]
-                ) && (
-                _.include(details.styles, boat.get('style'))
-                );
+            return boat.get('price') >= this.priceArray[0] &&
+                boat.get('price') <= this.priceArray[1] && 
+                _.include(details.styles, boat.get('style')) &&
+                _.include(details.size, boat.get('size'));
         }.bind(this));
 
         this.removeSubviews(".display-area");
@@ -41,7 +42,6 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
         }.bind(this) );
     },
     render: function() {
-        //TODO: WaterBnb.boats.filter( function(boat) { return boat.get('price') < 0 || boat.get('style') === 'budget'  } )
         var content = this.template({ boats: this.collection });
         this.$el.html(content);
         this.attachSubviews();
