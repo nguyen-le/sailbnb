@@ -17,6 +17,12 @@
 @import "bootstrap";
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:800,600,400);
 
+.date-stop {
+  width: 100%;
+}
+.date-start {
+  width: 100%;
+}
 body {
   font-family: 'open sans', helvetica;
   color: #555;
@@ -78,6 +84,26 @@ z#logout-btn:hover {
 #boat-show-desc {
   padding-top: 20px;
   background-color: rgb(240,240,240) ;
+}
+
+#boat-show-about {
+  background-color: rgb(240,240,240) ;
+}
+
+#boat-show-rent-req {
+  position:relative;
+  #num-guest-dd {
+    position:relative;
+    left: -10%;
+  }
+  #submit-rent-req {
+    margin-top: 20px;
+    width: 93%;
+    background-color: #ff5a5f;
+    color: white;
+    padding: 10px;
+    border: none;
+  }
 }
 
 #container {
@@ -219,6 +245,7 @@ z#logout-btn:hover {
     }
   }
 }
+
 
 #user-dropdown {
    padding-bottom: 0px;
