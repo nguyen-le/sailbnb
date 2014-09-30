@@ -18,14 +18,22 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
     addEventFeatured: function() {
         $('#featured').on("click", this.showFeatured.bind(this));
     },
-    addFilters: function() {
-        this.$searchSlider = this.$searchArea.find('#search-price');
+    addFiltersDate: function() {
         this.$dateStart = this.$searchArea.find('.date-start');
         this.$dateStop = this.$searchArea.find('.date-stop');
+        this.$dateStart.datepicker({
+            dateFormat: "yyyy-mm-dd",
+            minDate: 0
+        });
+        this.$dateStop.datepicker({
+            dateFormat: "yyyy-mm-dd",
+            minDate: 0
+        });
+    },
+    addFilterPrice: function() {
         this.$priceMin = this.$searchArea.find('#price-min');
         this.$priceMax = this.$searchArea.find('#price-max');
-        this.$dateStart.datepicker();
-        this.$dateStop.datepicker();
+        this.$searchSlider = this.$searchArea.find('#search-price');
         this.$searchSlider.slider({
             animate: 'fast',
             range: true,
@@ -34,6 +42,10 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
             values: [0,5000],
             step: 100
         });
+    },
+    addFilters: function() {
+        this.addFiltersDate();
+        this.addFilterPrice();
     },
     addItem: function(model) {
         var boat = this.collection.get(model.id);
