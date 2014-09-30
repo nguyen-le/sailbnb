@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
 
   has_many :boats
+  has_many :rental_requests
 
   def self.generate_token
     SecureRandom.urlsafe_base64
