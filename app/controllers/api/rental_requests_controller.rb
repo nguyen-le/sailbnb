@@ -34,7 +34,13 @@ module Api
     private
 
     def rent_params
-      params.require(:rental_requests).permit(:start, :leave, :renter_id, :boat_id)
+      a = params.require(:rental_requests).permit(:start, :leave, :renter_id, :boat_id)
+      [a[:start], a[:stop]].each do |date|
+        date_arr = date.split("/") 
+        date_arr[0], date_arr[2] = date_arr[2], date_arr[0]
+        date = date_arr.join("/")
+      end
+        a
     end
   end
 end
