@@ -1,5 +1,4 @@
 class Boat < ActiveRecord::Base
-  validates :name, :lat, :long, :price, :size, :owner, :images, presence: true
   belongs_to(
     :owner,
     primary_key: :id,
@@ -7,4 +6,5 @@ class Boat < ActiveRecord::Base
     class_name: 'User'
   )
   has_many :images
+  validates :name, :lat, :long, :price, :size, :owner, :images, presence: true
 end

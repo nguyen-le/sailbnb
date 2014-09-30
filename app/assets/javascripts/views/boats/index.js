@@ -12,7 +12,7 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
         "slide #search-price" : "updatePrice",
         "slidestop #search-price" : "updateFilter",
         "click .search-style" : "updateFilter",
-        "click .search-size" : "updateFilter"
+        "click .search-size" : "updateFilter",
     },
     updatePrice: function () {
         this.priceArray = this.$searchSlider.slider("values");
@@ -23,6 +23,19 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
             this.$priceMax.html('$' + this.priceArray[1]);
         }
     },
+    showFeatured: function() {
+        console.log(this.collection);
+        filteredCollection = this.collection.filter( function(boat) {
+            return boat.get('featured') === true;
+        }.bind(this));
+        console.log(filteredCollection);
+
+        this.removeSubviews(".display-area");
+        filteredCollection.forEach( function(boat) {
+           this.addItem(boat);
+        }.bind(this) );
+        this.setMarkers(this.map, filteredCollection);
+    },
     updateFilter: function() {
         var details = $('#search-form').serializeJSON();
         if (!details.size) {
@@ -31,7 +44,7 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
         this.updatePrice();
         filteredCollection = this.collection.filter( function(boat) {
             return boat.get('price') >= this.priceArray[0] &&
-                boat.get('price') <= this.priceArray[1] && 
+                boat.get('price') <= this.priceArray[1] &&
                 _.include(details.styles, boat.get('style')) &&
                 _.include(details.size, boat.get('size'));
         }.bind(this));
@@ -49,7 +62,11 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
         this.renderMap();
         this.$searchArea = $('#search-area');
         this.addFilters();
+        this.addEventFeatured();
         return this;
+    },
+    addEventFeatured: function() {
+        $('#featured').on("click", this.showFeatured.bind(this));
     },
     addFilters: function() {
         this.$searchSlider = this.$searchArea.find('#search-price');
@@ -80,11 +97,10 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
           };
           this.map = new google.maps.Map(this.$('#map-canvas')[0],
               mapOptions);
-					this.markers = [];
+          this.markers = [];
           if (this.collection.length > 0) {
               this.setMarkers(this.map, this.collection.models);
           }
-          
     },
     clearMarkers: function() {
         for (var i = 0; i < this.markers.length; i++) {

@@ -12,7 +12,7 @@ ActiveRecord::Base.transaction do
   b1 = Boat.new( name: 'Popeye', lat: 37.8211, long: -122.3759, price: '100', style: 'Budget', size: '4', user_id: 1, tagline: 'A small boat')
   b1.images.build(filepicker_url: 'https://www.filepicker.io/api/file/4qd0BKblSyet17bAINNp')
   b1.save!
-  b2 = Boat.new( name: 'Trails', lat: 37.8235, long: -122.517, price: '100', style: 'Budget', size: '4', user_id: 2, tagline: 'Trailing through sf')
+  b2 = Boat.new( name: 'Trails', lat: 37.8235, long: -122.517, price: '100', style: 'Budget', size: '4', user_id: 2, tagline: 'Trailing through sf', featured: true)
   #white yacht
   b2.images.build(filepicker_url: 'https://www.filepicker.io/api/file/z6cSwAMS9KtMUwIWtkAb')
   b2.save!
