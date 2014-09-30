@@ -16,12 +16,12 @@ module Api
     end
 
     def index
-      @boats = Boat.includes(:owner, :images).all
+      @boats = Boat.includes(:owner, :images, :rental_requests).all
       render :index
     end
 
     def show
-      @boat = Boat.includes(:owner, :images).find(params[:id])
+      @boat = Boat.includes(:owner, :images, :rental_requests).find(params[:id])
       render :show
     end
     private

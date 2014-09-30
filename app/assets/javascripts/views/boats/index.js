@@ -98,6 +98,7 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
         this.filteredCollection = this.collection.filter( function(boat) {
             return boat.get('featured') === true;
         }.bind(this));
+        this.renderFilteredBoatsAndMap();
     },
     updateFilter: function() {
         var details = $('#search-form').serializeJSON();

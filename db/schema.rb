@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140925161802) do
+ActiveRecord::Schema.define(version: 20140930053458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,19 @@ ActiveRecord::Schema.define(version: 20140925161802) do
   end
 
   add_index "images", ["boat_id"], name: "index_images_on_boat_id", using: :btree
+
+  create_table "rental_requests", force: true do |t|
+    t.date     "start",      null: false
+    t.date     "leave",      null: false
+    t.string   "status",     null: false
+    t.integer  "boat_id",    null: false
+    t.integer  "renter_id",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rental_requests", ["boat_id"], name: "index_rental_requests_on_boat_id", using: :btree
+  add_index "rental_requests", ["renter_id"], name: "index_rental_requests_on_renter_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "f_name",          null: false
