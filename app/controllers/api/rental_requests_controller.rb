@@ -15,8 +15,19 @@ module Api
       end
     end
 
+    def index
+      boat = Boat.find(params[:boat_id])
+      if boat.owner == current_user
+        @rent_reqs = boat.rental_requests
+      else
+        @rent_reqs = boat.rental_requests.where(renter_id: current_user.id)
+      end
+
+      render json: @rent_reqs
+    end
+
     def show
-      @rent_req = RentalRequest.find(params[:id])
+      @rent_req = Boat.find(params[:boat_id]).rental_requests.find(params[:id])
       render json: @rent_req
     end
 

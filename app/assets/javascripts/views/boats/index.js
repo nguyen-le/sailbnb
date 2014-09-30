@@ -101,16 +101,13 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
         this.renderFilteredBoatsAndMap();
     },
     updateFilter: function() {
-        var details = $('#search-form').serializeJSON();
-        if (!details.size) {
-            details.size = ["4", "8", "10"];
-        }
+        this.uploadFilterDefaults();
         this.updatePrice();
         this.filteredCollection = this.collection.filter( function(boat) {
             return boat.get('price') >= this.priceArray[0] &&
                 boat.get('price') <= this.priceArray[1] &&
-                _.include(details.styles, boat.get('style')) &&
-                _.include(details.size, boat.get('size'));
+                _.include(this.form.styles, boat.get('style')) &&
+                _.include(this.form.size, boat.get('size'));
         }.bind(this));
         this.renderFilteredBoatsAndMap();
     },
@@ -122,5 +119,10 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
         } else {
             this.$priceMax.html('$' + this.priceArray[1]);
         }
+    },
+    uploadFilterDefaults: function() {
+        this.form = $('#search-form').serializeJSON();
+        if (!this.form.size) this.form.size = ["4", "8", "10"];
+        if (!this.form.dateStart) this.form.dateStart = new Date();
     },
 });
