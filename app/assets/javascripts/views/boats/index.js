@@ -13,6 +13,7 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
         "slidestop #search-price" : "updateFilter",
         "click .search-style" : "updateFilter",
         "click .search-size" : "updateFilter",
+        "click #resetFilter" : "resetFilter"
     },
     updatePrice: function () {
         this.priceArray = this.$searchSlider.slider("values");
@@ -24,12 +25,9 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
         }
     },
     showFeatured: function() {
-        console.log(this.collection);
         filteredCollection = this.collection.filter( function(boat) {
             return boat.get('featured') === true;
         }.bind(this));
-        console.log(filteredCollection);
-
         this.removeSubviews(".display-area");
         filteredCollection.forEach( function(boat) {
            this.addItem(boat);
@@ -54,6 +52,13 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
            this.addItem(boat);
         }.bind(this) );
         this.setMarkers(this.map, filteredCollection);
+    },
+    resetFilter: function() {
+        this.removeSubviews(".display-area");
+        this.collection.models.forEach( function(boat) {
+           this.addItem(boat);
+        }.bind(this) );
+        this.setMarkers(this.map, this.collection.models);
     },
     render: function() {
         var content = this.template({ boats: this.collection });
