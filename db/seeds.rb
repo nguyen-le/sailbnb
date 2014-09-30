@@ -9,7 +9,11 @@ ActiveRecord::Base.transaction do
   User.create( f_name: 'Guest', l_name:'Guester', email: 'guest', password: 'apples')
   User.create( f_name: 'John', l_name:'Doe', email: 'johndoe', password: 'apples')
   User.create( f_name: 'Jane', l_name:'Doe', email: 'janedoe', password: 'apples')
+  User.create( f_name: 'Elon', l_name:'Musk', email: 'elonmusk', password: 'apples')
+  User.create( f_name: 'Walter', l_name:'White', email: 'heisenberg', password: 'apples')
+  User.create( f_name: 'Tony', l_name:'Stark', email: 'ironman', password: 'apples')
   b1 = Boat.new( name: 'Popeye', lat: 37.8211, long: -122.3759, price: '100', style: 'Budget', size: '4', user_id: 1, tagline: 'A small boat')
+  b1.description = "This is a wonderfully small boat. If you like a cozy and well furnished yacht, this is the one for you!"
   b1.images.build(filepicker_url: 'https://www.filepicker.io/api/file/4qd0BKblSyet17bAINNp')
   b1.save!
   b2 = Boat.new( name: 'Trails', lat: 37.8235, long: -122.517, price: '100', style: 'Budget', size: '4', user_id: 2, tagline: 'Trailing through sf', featured: true)
