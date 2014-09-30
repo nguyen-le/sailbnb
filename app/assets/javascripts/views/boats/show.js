@@ -1,9 +1,15 @@
 WaterBnb.Views.BoatShow = Backbone.CompositeView.extend({
     template: JST["boats/show"],
     initialize: function() {
-        this.collection = this.model.images();
+        this.images = this.model.images();
+        this.requests = this.model.rentalRequests();
         this.listenTo( this.model, 'sync', this.render );
-        this.listenTo( this.collection, 'add', this.render );
+        this.listenTo( this.images, 'add', this.render );
+        this.listenTo( this.requests, 'add', this.addItem );
+        this.$requestArea = $('#boat-show-rent-req');
+        this.requests.each( function(req) {
+            this.addItem(req);
+        }.bind(this) );
     },
     events: {
         "click .fp-upload" : "uploadimg",

@@ -11,7 +11,7 @@
 <% } %>
 <div id="boat-show-info" class="container">
   <div class="row">
-    <div class="col-sm-3 text-center">
+    <div class="col-sm-2 text-center">
       <div>
         <img id="boat-show-owner"src="<%= boat.owner().get('image_url') %>" alt="" />
       </div>
@@ -19,7 +19,7 @@
         <%= boat.owner().get('f_name') %>
       </div>
     </div>
-    <div class="col-sm-9">
+    <div class="col-sm-6">
       <p id="boat-show-name"><%= boat.escape('name') %></p>
       <p>"<%= boat.escape('tagline') %>"</p>
       <a class="fp-upload" href="javascript:void(0)">Upload Picture</a>
@@ -31,8 +31,13 @@
         <h5><%= image.get('filepicker_url') %></h5>
       <% } ) %>
     </div>
+    <div class="col-sm-4">
+      <div id="boat-show-rent-req">
+      </div>
+    </div>
   </div>
 </div>
+
 <div id="boat-show-desc">
   <div class="container">
     <h4>About This Listing</h4>
