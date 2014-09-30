@@ -15,61 +15,6 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
         "click .search-size" : "updateFilter",
         "click #resetFilter" : "resetFilter"
     },
-    updatePrice: function () {
-        this.priceArray = this.$searchSlider.slider("values");
-        this.$priceMin.html('$' + this.priceArray[0]);
-        if (this.priceArray[1] === 5000) {
-            this.$priceMax.html('$' + this.priceArray[1] + "+");
-        } else {
-            this.$priceMax.html('$' + this.priceArray[1]);
-        }
-    },
-    showFeatured: function() {
-        filteredCollection = this.collection.filter( function(boat) {
-            return boat.get('featured') === true;
-        }.bind(this));
-        this.removeSubviews(".display-area");
-        filteredCollection.forEach( function(boat) {
-           this.addItem(boat);
-        }.bind(this) );
-        this.setMarkers(this.map, filteredCollection);
-    },
-    updateFilter: function() {
-        var details = $('#search-form').serializeJSON();
-        if (!details.size) {
-            details.size = ["4", "8", "10"];
-        }
-        this.updatePrice();
-        filteredCollection = this.collection.filter( function(boat) {
-            return boat.get('price') >= this.priceArray[0] &&
-                boat.get('price') <= this.priceArray[1] &&
-                _.include(details.styles, boat.get('style')) &&
-                _.include(details.size, boat.get('size'));
-        }.bind(this));
-
-        this.removeSubviews(".display-area");
-        filteredCollection.forEach( function(boat) {
-           this.addItem(boat);
-        }.bind(this) );
-        this.setMarkers(this.map, filteredCollection);
-    },
-    resetFilter: function() {
-        this.removeSubviews(".display-area");
-        this.collection.models.forEach( function(boat) {
-           this.addItem(boat);
-        }.bind(this) );
-        this.setMarkers(this.map, this.collection.models);
-    },
-    render: function() {
-        var content = this.template({ boats: this.collection });
-        this.$el.html(content);
-        this.attachSubviews();
-        this.renderMap();
-        this.$searchArea = $('#search-area');
-        this.addFilters();
-        this.addEventFeatured();
-        return this;
-    },
     addEventFeatured: function() {
         $('#featured').on("click", this.showFeatured.bind(this));
     },
@@ -95,22 +40,46 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
         var view = new WaterBnb.Views.IndexItem({ model: boat });
         this.addSubview( '.display-area', view);
     },
-    renderMap: function() {
-          var mapOptions = {
-            center: { lat: 37.4, lng: -122.5},
-            zoom: 9
-          };
-          this.map = new google.maps.Map(this.$('#map-canvas')[0],
-              mapOptions);
-          this.markers = [];
-          if (this.collection.length > 0) {
-              this.setMarkers(this.map, this.collection.models);
-          }
-    },
     clearMarkers: function() {
         for (var i = 0; i < this.markers.length; i++) {
             this.markers[i].setMap(null);
         }
+    },
+    render: function() {
+        var content = this.template({ boats: this.collection });
+        this.$el.html(content);
+        this.attachSubviews();
+        this.renderMap();
+        this.$searchArea = $('#search-area');
+        this.addFilters();
+        this.addEventFeatured();
+        return this;
+    },
+    renderFilteredBoatsAndMap: function () {
+        this.removeSubviews(".display-area");
+        this.filteredCollection.forEach( function(boat) {
+           this.addItem(boat);
+        }.bind(this) );
+        this.setMarkers(this.map, this.filteredCollection);
+    },
+    renderMap: function() {
+        var mapOptions = {
+             center: { lat: 37.4, lng: -122.5},
+             zoom: 9
+        };
+        this.map = new google.maps.Map(this.$('#map-canvas')[0],
+                     mapOptions);
+        this.markers = [];
+        if (this.collection.length > 0) {
+            this.setMarkers(this.map, this.collection.models);
+        }
+    },
+    resetFilter: function() {
+        this.removeSubviews(".display-area");
+        this.collection.models.forEach( function(boat) {
+           this.addItem(boat);
+        }.bind(this) );
+        this.setMarkers(this.map, this.collection.models);
     },
     setMarkers: function(map, collection) {
         this.clearMarkers();
@@ -123,6 +92,34 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
                 map: map,
             });
             this.markers.push(marker);
+        }
+    },
+    showFeatured: function() {
+        this.filteredCollection = this.collection.filter( function(boat) {
+            return boat.get('featured') === true;
+        }.bind(this));
+    },
+    updateFilter: function() {
+        var details = $('#search-form').serializeJSON();
+        if (!details.size) {
+            details.size = ["4", "8", "10"];
+        }
+        this.updatePrice();
+        this.filteredCollection = this.collection.filter( function(boat) {
+            return boat.get('price') >= this.priceArray[0] &&
+                boat.get('price') <= this.priceArray[1] &&
+                _.include(details.styles, boat.get('style')) &&
+                _.include(details.size, boat.get('size'));
+        }.bind(this));
+        this.renderFilteredBoatsAndMap();
+    },
+    updatePrice: function () {
+        this.priceArray = this.$searchSlider.slider("values");
+        this.$priceMin.html('$' + this.priceArray[0]);
+        if (this.priceArray[1] === 5000) {
+            this.$priceMax.html('$' + this.priceArray[1] + "+");
+        } else {
+            this.$priceMax.html('$' + this.priceArray[1]);
         }
     },
 });

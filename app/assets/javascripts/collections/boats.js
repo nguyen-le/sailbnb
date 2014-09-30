@@ -6,12 +6,10 @@ WaterBnb.Collections.Boats = Backbone.Collection.extend({
     },
     getOrFetch: function(id) {
         var boat = WaterBnb.boats.get(id);
-        if (boat) {
-            boat.fetch();
-        } else {
+        if (!boat) {
             boat = new WaterBnb.Models.Boat({ id:id });
-            boat.fetch();
         }
+        boat.fetch();
         return boat;
     }
 });

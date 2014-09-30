@@ -9,19 +9,13 @@ WaterBnb.Views.BoatNew = Backbone.CompositeView.extend({
     },
     createBoat: function() {
         event.preventDefault();
+        var success = function() {
+            Backbone.history.navigate("#/boats/" + this.model.id, { trigger: true });
+        };
         var attrs = $(event.target).serializeJSON();
-        this.model.set(attrs);
-        WaterBnb.boats.create(this.model, {
-            success: function() {
-                 Backbone.history.navigate(
-                     "#/boats/" + this.model.id,
-                     { trigger: true }
-                 );
-            }.bind(this),
+        WaterBnb.boats.create( this.model.set(attrs), {
+            success: success.bind(this),
             wait: true,
-            error: function(resp) {
-                console.log(resp);
-            }
         });
     },
     uploadimg: function () {
