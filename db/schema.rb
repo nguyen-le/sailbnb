@@ -11,54 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140925161802) do
+ActiveRecord::Schema.define(version: 0) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "boats", force: true do |t|
-    t.string   "name",        null: false
-    t.float    "lat",         null: false
-    t.float    "long",        null: false
-    t.text     "description"
-    t.string   "tagline",     null: false
-    t.string   "style",       null: false
-    t.string   "size",        null: false
-    t.integer  "price",       null: false
-    t.integer  "user_id",     null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "boats", ["price"], name: "index_boats_on_price", using: :btree
-  add_index "boats", ["user_id"], name: "index_boats_on_user_id", using: :btree
-
-  create_table "images", force: true do |t|
-    t.integer  "boat_id"
-    t.string   "filepicker_url"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "images", ["boat_id"], name: "index_images_on_boat_id", using: :btree
-
-  create_table "users", force: true do |t|
-    t.string   "f_name",          null: false
-    t.string   "l_name",          null: false
-    t.string   "nickname"
-    t.string   "email",           null: false
-    t.string   "location"
-    t.string   "slogan"
-    t.text     "intro"
-    t.string   "work"
-    t.string   "password_digest", null: false
-    t.string   "session_token",   null: false
-    t.string   "image_url"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["session_token"], name: "index_users_on_session_token", using: :btree
 
 end
