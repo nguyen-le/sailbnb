@@ -28,11 +28,13 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
         this.$stop = this.$searchArea.find('.date-stop');
         this.$start.datepicker({
             dateFormat: "mm/dd/yy",
-            minDate: 0
+            minDate: 0,
+            numberOfMonths: [1,2]
         });
         this.$stop.datepicker({
             dateFormat: "mm/dd/yy",
-            minDate: 0
+            minDate: 0,
+            numberOfMonths: [1,2]
         });
     },
     addFilterPrice: function() {

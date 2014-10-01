@@ -8,12 +8,14 @@ WaterBnb.Views.RequestNew = Backbone.CompositeView.extend({
         "change .date-start" : "evDateStart"
     },
     evDateStart: function() {
-        this.$dateStop.datepicker({
+        this.$leave.datepicker({
             dateFormat: "mm/dd/yy",
-            minDate: this.$dateStart.val(),
+            minDate: this.$start.val(),
             numberOfMonths: [1,2],
         });
-        this.$dateStop.trigger("focus");
+        setTimeout( function() {
+            this.$leave.trigger("focus");    
+        }.bind(this), 0);
     },
     evRequest: function(event) {
         event.preventDefault();
@@ -26,14 +28,14 @@ WaterBnb.Views.RequestNew = Backbone.CompositeView.extend({
         this.$rentReq = $('#boat-show-rent-req');
         this.$rentReq.affix({
             offset: {
-                top: this.$rentReq.offset().top - 62,
+                top: this.$rentReq.offset().top - 110,
             },
         });
     },
     addDate: function() {
-        this.$dateStart = $('.date-start');
-        this.$dateStop = $('.date-stop');
-        this.$dateStart.datepicker({
+        this.$start = $('.date-start');
+        this.$leave = $('.date-stop');
+        this.$start.datepicker({
             dateFormat: "mm/dd/yy",
             minDate: 0,
             numberOfMonths: [1,2],
@@ -58,7 +60,7 @@ WaterBnb.Views.RequestNew = Backbone.CompositeView.extend({
         this.addGuestPicker();
     },
     render: function() {
-        var content = this.template();
+        var content = this.template({req: this.model});
         this.$el.html(content);
         setTimeout(this.addInputs.bind(this), 100);
         setTimeout(this.addAffix.bind(this), 100);

@@ -83,22 +83,6 @@ z#logout-btn:hover {
     width: 80vw;
     height: 75vh;
     background-size: cover;
-    #boat-show-price {
-      position: absolute;
-      right: 12%;
-      bottom: 0;
-      background-color: rgba(50,50,50,0.8);
-      padding: 5px 15px;
-      color: white;
-      > span:first-child {
-        font-size: 1.5em;
-      }
-      span:nth-child(2) {
-        position: relative;
-        top: -4px;
-        margin-left: 50px;
-      }
-    }
   }
 }
 
@@ -126,10 +110,37 @@ z#logout-btn:hover {
   background-color: rgb(240,240,240) ;
 }
 
-#boat-show-rent-req {
-  padding: 10px;
+#boat-show-price-bg {
+  position: absolute;
+  top: -60px;
   background-color: white;
-  max-width: 300px;
+  height: 60px;
+  width: 100%;
+  max-width: 352px;
+  #boat-show-price {
+    background-color: rgba(50,50,50,0.8);
+    width: 100%;
+    padding: 5px 15px;
+    color: white;
+    > span:first-child {
+      font-size: 1.5em;
+    }
+    span:nth-child(2) {
+      position: relative;
+      top: -4px;
+      margin-left: 50px;
+    }
+  }
+}
+
+#boat-show-rent-req {
+  width:100%;
+  background-color: white;
+  max-width: 350px;
+  padding-bottom: 10px;
+  #rent-req-form {
+    width: 100%;
+  }
   #num-guest-dd {
     position:relative;
     left: -10%;
@@ -143,7 +154,8 @@ z#logout-btn:hover {
     border: none;
   }
   &.affix {
-    top: 60px;
+    top: 108px;
+    box-shadow: 4px 4px 4px rgb(210,210,210);
   }
 }
 

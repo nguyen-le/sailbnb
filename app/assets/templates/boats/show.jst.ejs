@@ -21,17 +21,9 @@
       <a class="fp-upload" href="javascript:void(0)">Upload Picture</a>
       <p><%= boat.escape('location') %></p>
       <p><%= boat.escape('style') %></p>
-      <p><%= boat.escape('price') %></p>
       <p><%= boat.escape('size') %></p>
-      <% boat.images().models.forEach( function(image) { %>
-        <h5><%= image.get('filepicker_url') %></h5>
-      <% } ) %>
     </div>
-    <div id="rent-req-container" class="col-sm-4">
-      <div id="boat-show-price">
-        <span>$<%= boat.escape('price') %></span>
-        <span>per night</span>
-      </div>
+    <div class="col-sm-4">
       <div id="boat-show-rent-req">
       </div>
     </div>
@@ -54,3 +46,6 @@
     <h4>About the Host, <%= boat.owner().get('f_name') %></h4>
   </div>
 </div>
+      <% boat.images().models.forEach( function(image) { %>
+        <h5><%= image.get('filepicker_url') %></h5>
+      <% } ) %>
