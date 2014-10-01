@@ -7,6 +7,7 @@ WaterBnb.Views.BoatShow = Backbone.CompositeView.extend({
         this.listenTo( this.model, 'sync', this.addForm );
         this.listenTo( this.images, 'add', this.render );
         this.$requestArea = $('#boat-show-rent-req');
+        this.removeFeatured();
     },
     events: {
         "click .fp-upload" : "uploadimg",
@@ -15,6 +16,9 @@ WaterBnb.Views.BoatShow = Backbone.CompositeView.extend({
         var req = new WaterBnb.Models.RentalRequest({}, { boat: this.model });
         var view = new WaterBnb.Views.RequestNew({ model: req });
         this.addSubview('#boat-show-rent-req', view);
+    },
+    removeFeatured: function () {
+        $('li#featured-li').empty();
     },
     render: function() {
         var content = this.template({ boat: this.model });

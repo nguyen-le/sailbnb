@@ -4,13 +4,22 @@ WaterBnb.Views.RequestNew = Backbone.CompositeView.extend({
         this.listenTo( this.model, "sync", this.render );
     },
     events: {
-        "submit form" : "evRequest"
+        "submit form" : "evRequest",
+        "change .date-start" : "evDateStart"
+    },
+    evDateStart: function() {
+        this.$dateStop.datepicker({
+            dateFormat: "mm/dd/yy",
+            minDate: this.$dateStart.val(),
+            numberOfMonths: [1,2],
+        });
+        this.$dateStop.trigger("focus");
     },
     evRequest: function(event) {
         event.preventDefault();
         $submit = $('#submit-rent-req');
         $submit.css("background-color", "#5cb85c");
-        $submit.html("Request Submitted");
+        $submit.val("Request Submitted");
         console.log("submitted");
     },
     addDate: function() {
@@ -18,11 +27,9 @@ WaterBnb.Views.RequestNew = Backbone.CompositeView.extend({
         this.$dateStop = $('.date-stop');
         this.$dateStart.datepicker({
             dateFormat: "mm/dd/yy",
-            minDate: 0
-        });
-        this.$dateStop.datepicker({
-            dateFormat: "mm/dd/yy",
-            minDate: 0
+            minDate: 0,
+            numberOfMonths: [1,2],
+
         });
     },
     addGuestPicker: function() {
