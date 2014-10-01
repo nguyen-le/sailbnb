@@ -103,6 +103,7 @@ z#logout-btn:hover {
 }
 
 #boat-show-info {
+  position: relative;
   padding-top: 20px;
   #boat-show-owner {
     margin-bottom: 10px;
@@ -126,7 +127,9 @@ z#logout-btn:hover {
 }
 
 #boat-show-rent-req {
-  position:relative;
+  padding: 10px;
+  background-color: white;
+  max-width: 300px;
   #num-guest-dd {
     position:relative;
     left: -10%;
@@ -138,6 +141,9 @@ z#logout-btn:hover {
     color: white;
     padding: 10px;
     border: none;
+  }
+  &.affix {
+    top: 60px;
   }
 }
 

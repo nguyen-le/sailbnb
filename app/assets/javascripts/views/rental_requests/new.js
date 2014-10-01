@@ -22,6 +22,14 @@ WaterBnb.Views.RequestNew = Backbone.CompositeView.extend({
         $submit.val("Request Submitted");
         console.log("submitted");
     },
+    addAffix: function() {
+        this.$rentReq = $('#boat-show-rent-req');
+        this.$rentReq.affix({
+            offset: {
+                top: this.$rentReq.offset().top - 62,
+            },
+        });
+    },
     addDate: function() {
         this.$dateStart = $('.date-start');
         this.$dateStop = $('.date-stop');
@@ -53,6 +61,7 @@ WaterBnb.Views.RequestNew = Backbone.CompositeView.extend({
         var content = this.template();
         this.$el.html(content);
         setTimeout(this.addInputs.bind(this), 100);
+        setTimeout(this.addAffix.bind(this), 100);
         return this;
     },
 });
