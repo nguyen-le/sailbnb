@@ -3,5 +3,7 @@ WaterBnb.Collections.RentalRequests = Backbone.Collection.extend({
     initialize: function(model, options) {
         if (options) this.boat = options.boat;
     },
-    url: "/api/boats/rental_requests",
+    url: "/api/rental_requests",
 });
+
+WaterBnb.requests = new WaterBnb.Collections.RentalRequests();
