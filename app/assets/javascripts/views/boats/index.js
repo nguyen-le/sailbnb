@@ -14,7 +14,8 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
         "slidestop #search-price" : "updateFilter",
         "click .search-style" : "updateFilter",
         "click .search-size" : "updateFilter",
-        "click #resetFilter" : "pseudoResetFilter"
+        "click #resetFilter" : "pseudoResetFilter",
+        "change .date-start" : "addFiltersDateLeave"
     },
     addEventFeatured: function() {
         $('#featured').on("click", this.showFeatured.bind(this));
@@ -25,17 +26,22 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
     },
     addFiltersDate: function() {
         this.$start = this.$searchArea.find('.date-start');
-        this.$stop = this.$searchArea.find('.date-stop');
+        this.$leave = this.$searchArea.find('.date-stop');
         this.$start.datepicker({
             dateFormat: "mm/dd/yy",
             minDate: 0,
             numberOfMonths: [1,2]
         });
-        this.$stop.datepicker({
+    },
+    addFiltersDateLeave: function() {
+        this.$leave.datepicker({
             dateFormat: "mm/dd/yy",
-            minDate: 0,
-            numberOfMonths: [1,2]
+            minDate: this.$start.val(),
+            numberOfMonths: [1,2],
         });
+        setTimeout( function() {
+            this.$leave.trigger("focus");    
+        }.bind(this), 0);
     },
     addFilterPrice: function() {
         this.$priceMin = this.$searchArea.find('#price-min');
