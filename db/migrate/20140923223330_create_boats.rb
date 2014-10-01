@@ -7,7 +7,7 @@ class CreateBoats < ActiveRecord::Migration
       t.text    :description
       t.string  :tagline, null: false
       t.string  :style, null: false
-      t.integer  :size, null: false
+      t.string  :size, null: false
       t.integer :price, null: false
       t.integer :user_id, null: false
       t.boolean :featured

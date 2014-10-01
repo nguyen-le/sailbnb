@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20140930053458) do
     t.text     "description"
     t.string   "tagline",     null: false
     t.string   "style",       null: false
-    t.integer  "size",        null: false
+    t.string   "size",        null: false
     t.integer  "price",       null: false
     t.integer  "user_id",     null: false
     t.boolean  "featured"

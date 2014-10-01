@@ -14,7 +14,7 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
         "slidestop #search-price" : "updateFilter",
         "click .search-style" : "updateFilter",
         "click .search-size" : "updateFilter",
-        "click #resetFilter" : "resetFilter"
+        "click #resetFilter" : "pseudoResetFilter"
     },
     addEventFeatured: function() {
         $('#featured').on("click", this.showFeatured.bind(this));
@@ -24,13 +24,13 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
         $li.html("<a href=javascript:void(0) id=featured>Featured</a>");
     },
     addFiltersDate: function() {
-        this.$dateStart = this.$searchArea.find('.date-start');
-        this.$dateStop = this.$searchArea.find('.date-stop');
-        this.$dateStart.datepicker({
+        this.$start = this.$searchArea.find('.date-start');
+        this.$stop = this.$searchArea.find('.date-stop');
+        this.$start.datepicker({
             dateFormat: "mm/dd/yy",
             minDate: 0
         });
-        this.$dateStop.datepicker({
+        this.$stop.datepicker({
             dateFormat: "mm/dd/yy",
             minDate: 0
         });
@@ -91,7 +91,7 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
             this.setMarkers(this.map, this.collection.models);
         }
     },
-    resetFilter: function() {
+    pseudoResetFilter: function() {
         this.removeSubviews(".display-area");
         this.collection.models.forEach( function(boat) {
            this.addItem(boat);
@@ -140,6 +140,6 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
     uploadFilterDefaults: function() {
         this.form = $('#search-form').serializeJSON();
         if (!this.form.size) this.form.size = ["4", "8", "10"];
-        if (!this.form.dateStart) this.form.dateStart = new Date();
+        if (!this.form.start) this.form.start = new Date();
     },
 });
