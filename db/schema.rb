@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20140930053458) do
     t.text     "description"
     t.string   "tagline",     null: false
     t.string   "style",       null: false
-    t.string   "size",        null: false
+    t.integer  "size",        null: false
     t.integer  "price",       null: false
     t.integer  "user_id",     null: false
     t.boolean  "featured"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20140930053458) do
   create_table "rental_requests", force: true do |t|
     t.date     "start",      null: false
     t.date     "leave",      null: false
+    t.integer  "guests",     null: false
     t.string   "status",     null: false
     t.integer  "boat_id",    null: false
     t.integer  "renter_id",  null: false

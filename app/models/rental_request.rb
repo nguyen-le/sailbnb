@@ -6,7 +6,7 @@ class RentalRequest < ActiveRecord::Base
     foreign_key: :renter_id,
     class_name: "User"
   )
-  validates :start, :leave, :status, :boat_id, :renter_id, presence: true
+  validates :start, :leave, :status, :boat_id, :renter_id, :guests, presence: true
   before_validation :is_overlapping_with_approved?
   after_initialize :initial_status_pending
 

@@ -16,31 +16,27 @@ module Api
     end
 
     def index
-      boat = Boat.find(params[:boat_id])
-      if boat.owner == current_user
-        @rent_reqs = boat.rental_requests
-      else
-        @rent_reqs = boat.rental_requests.where(renter_id: current_user.id)
-      end
-
-      render json: @rent_reqs
+      @rent_reqs = RentalRequest.includes(:boat).all
+      render json: @rent_reqs, include: :boat
     end
 
     def show
-      @rent_req = Boat.find(params[:boat_id]).rental_requests.find(params[:id])
-      render json: @rent_req
+      @rent_req = RentalRequest.includes(:boat).find(params[:id])
+      render :show
     end
 
     private
 
     def rent_params
-      a = params.require(:rental_requests).permit(:start, :leave, :renter_id, :boat_id)
-      [a[:start], a[:stop]].each do |date|
-        date_arr = date.split("/") 
-        date_arr[0], date_arr[2] = date_arr[2], date_arr[0]
-        date = date_arr.join("/")
-      end
-        a
+      adj_params = params.require(:rental_requests).permit(:start, :leave, :renter_id, :boat_id, :guests)
+      date_arr = a[:start].split("/")
+      date_arr[0], date_arr[2] = date_arr[2], date_arr[0]
+      adj_params[:start] = date_arr.join("/")
+
+      date_arr = a[:stop].split("/")
+      date_arr[0], date_arr[2] = date_arr[2], date_arr[0]
+      adj_params[:stop] = date_arr.join("/")
+      adj_params
     end
   end
 end

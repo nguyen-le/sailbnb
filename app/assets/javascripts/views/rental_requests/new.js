@@ -3,6 +3,16 @@ WaterBnb.Views.RequestNew = Backbone.CompositeView.extend({
     initialize: function() {
         this.listenTo( this.model, "sync", this.render );
     },
+    events: {
+        "submit form" : "evRequest"
+    },
+    evRequest: function(event) {
+        event.preventDefault();
+        $submit = $('#submit-rent-req');
+        $submit.css("background-color", "#5cb85c");
+        $submit.html("Request Submitted");
+        console.log("submitted");
+    },
     addDate: function() {
         this.$dateStart = $('.date-start');
         this.$dateStop = $('.date-stop');
