@@ -15,22 +15,50 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:800,600,400);
+/*@import url(http://fonts.googleapis.com/css?family=Open+Sans:800,600,400);*/
+@font-face {
+  font-family: "Circular";
+  font-style: normal;
+  font-weight: normal;
+  src: url("https://a1.muscache.com/airbnb/static/o2.1/build/fonts/Circular_Air-Book-b2878d8b449f2c4140c98427357a85a7.eot?#") format("eot"), url("https://a0.muscache.com/s/static/o2.1/build/fonts/Circular_Air-Book-b54ee6f7a2883a35e16cb7015094984c.woff") format("woff"), url("https://a2.muscache.com/airbnb/static/o2.1/build/fonts/Circular_Air-Book-0e6b0995e58ac0b00110dce5b5ef1f75.svg") format("svg");
+}
+
+label {
+  font-weight: 400;
+}
 
 .date-start, .date-stop {
   padding-left: 5px;
   width: 100%;
 }
 body {
-  font-family: 'open sans', helvetica;
+  font-family: Circular,/*'open sans',*/ helvetica;
   color: #555;
 }
 
 footer {
+  padding: 50px;
   bottom: 0;
   width: 100%;
-  background-color: black;
+  background-color: rgb(20,20,20);
   color: white;
+  h5 {
+    margin-top: 0;
+    font-size: 16px;
+  }
+  ul {
+    padding:0;
+    list-style-type: none;
+    font-size: 13px;
+    .link-contrast {
+      color: white;
+      line-height: 15px;
+      &:hover {
+        color: gray;
+        text-decoration: none;
+      }
+    }
+  }
 }
 
 z.navbar-brand {
@@ -56,6 +84,7 @@ z#logout-btn:hover {
     height: 75vh;
     background-size: cover;
     #boat-show-price {
+      width: 25%;
       position: absolute;
       right: 15%;
       bottom: 0;
@@ -66,6 +95,8 @@ z#logout-btn:hover {
         font-size: 1.5em;
       }
       span:nth-child(2) {
+        position: relative;
+        top: -4px;
         margin-left: 50px;
       }
     }
@@ -264,7 +295,7 @@ z#logout-btn:hover {
   top: 20%;
   span {
     font-size: 4em;
-    font-weight: 600;
+    font-weight: 900;
   }
   text-shadow: 1px 1px 2px #777, 0px 0px 50px black;
 }
