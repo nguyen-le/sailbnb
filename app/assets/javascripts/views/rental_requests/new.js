@@ -4,7 +4,7 @@ WaterBnb.Views.RequestNew = Backbone.CompositeView.extend({
         this.listenTo( this.model, "sync", this.render );
     },
     events: {
-        "submit form" : "evRequest",
+        "submit form" : "evSubmitRequest",
         "change .date-start" : "evDateStart"
     },
     evDateStart: function() {
@@ -17,18 +17,31 @@ WaterBnb.Views.RequestNew = Backbone.CompositeView.extend({
             this.$leave.trigger("focus");    
         }.bind(this), 0);
     },
-    evRequest: function(event) {
+    evSubmitRequest: function(event) {
         event.preventDefault();
-        $submit = $('#submit-rent-req');
-        $submit.css("background-color", "#5cb85c");
-        $submit.val("Request Submitted");
-        console.log("submitted");
+        var $rentReq = $('#rent-req-form');
+        var data = $rentReq.serializeJSON();
+        data.boat_id = this.model.boat.id;
+        data.renter_id = this.model.boat.owner().id;
+        console.log(data);
+        console.log("sending");
+        WaterBnb.requests.create( data, {
+            success: function() {
+                console.log("successful");
+            },
+            error: function() {
+                console.log("error");
+            }
+        } );
+        //$submit = $('#submit-rent-req');
+        //$submit.css("background-color", "#5cb85c");
+        //$submit.val("Request Submitted");
     },
     addAffix: function() {
-        this.$rentReq = $('#boat-show-rent-req');
-        this.$rentReq.affix({
+        $rentReq = $('#boat-show-rent-req');
+        $rentReq.affix({
             offset: {
-                top: this.$rentReq.offset().top - 110,
+                top: $rentReq.offset().top - 110,
             },
         });
     },

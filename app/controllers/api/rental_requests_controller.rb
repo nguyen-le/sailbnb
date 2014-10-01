@@ -11,7 +11,7 @@ module Api
         flash.now[:notice] = ['Request submitted!']
         render json: @rent_req
       else
-        render json: @rent_req.errors, status: unprocessable_entity
+        render json: @rent_req.errors, status: 402
       end
     end
 
@@ -28,14 +28,14 @@ module Api
     private
 
     def rent_params
-      adj_params = params.require(:rental_requests).permit(:start, :leave, :renter_id, :boat_id, :guests)
-      date_arr = a[:start].split("/")
+      adj_params = params.require(:rental_request).permit(:start, :leave, :renter_id, :boat_id, :guests)
+      date_arr = adj_params[:start].split("/")
       date_arr[0], date_arr[2] = date_arr[2], date_arr[0]
       adj_params[:start] = date_arr.join("/")
 
-      date_arr = a[:stop].split("/")
+      date_arr = adj_params[:leave].split("/")
       date_arr[0], date_arr[2] = date_arr[2], date_arr[0]
-      adj_params[:stop] = date_arr.join("/")
+      adj_params[:leave] = date_arr.join("/")
       adj_params
     end
   end
