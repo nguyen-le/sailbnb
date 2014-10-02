@@ -7,7 +7,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
     if @user.save
       flash[:notices] = ["User was successfully created."]
       login!(@user)

@@ -23,19 +23,21 @@ WaterBnb.Views.RequestNew = Backbone.CompositeView.extend({
         var data = $rentReq.serializeJSON();
         data.boat_id = this.model.boat.id;
         data.renter_id = this.model.boat.owner().id;
-        console.log(data);
-        console.log("sending");
+        $submit = $('#submit-rent-req');
+        submitStyle = $submit[0].style;
         WaterBnb.requests.create( data, {
             success: function() {
-                console.log("successful");
+                submitStyle.backgroundColor = "#5cb85c";
+                $submit.val("Request Submitted");
             },
             error: function() {
-                console.log("error");
+                submitStyle.backgroundColor = "gold";
+                $submit.val("Invalid Request");
+                setTimeout( function() {
+                    submitStyle.backgroundColor = "#ff5a5f";
+                }, 1000 );
             }
         } );
-        //$submit = $('#submit-rent-req');
-        //$submit.css("background-color", "#5cb85c");
-        //$submit.val("Request Submitted");
     },
     addAffix: function() {
         $rentReq = $('#boat-show-rent-req');
@@ -49,7 +51,7 @@ WaterBnb.Views.RequestNew = Backbone.CompositeView.extend({
         this.$start = $('.date-start');
         this.$leave = $('.date-stop');
         this.$start.datepicker({
-            dateFormat: "mm/dd/yy",
+            altFormat: "mm/dd/yy",
             minDate: 0,
             numberOfMonths: [1,2],
 

@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base
   attr_reader :password
   validates :f_name, :l_name, :email, :password_digest, 
-    :session_token, :image_url, presence: true
+            :session_token, :image_url, presence: true
   validates :email, :uniqueness => true
   validates :password, length: { minimum: 6 }, allow_nil: true
-  before_validation :ensure_image_url
   after_initialize :ensure_session_token
+  before_validation :ensure_image_url
 
   has_many :boats
   has_many :rental_requests

@@ -1,4 +1,7 @@
 class RentalRequest < ActiveRecord::Base
+  after_initialize :initial_status_pending
+  before_validation :is_overlapping_with_approved?
+
   belongs_to :boat
   belongs_to(
     :renter,
@@ -7,8 +10,6 @@ class RentalRequest < ActiveRecord::Base
     class_name: "User"
   )
   validates :start, :leave, :status, :boat_id, :renter_id, :guests, presence: true
-  before_validation :is_overlapping_with_approved?
-  after_initialize :initial_status_pending
 
   def is_overlapping_with_approved?
     array_overlapping =

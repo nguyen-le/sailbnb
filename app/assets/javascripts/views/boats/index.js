@@ -4,9 +4,7 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
         this.listenTo( this.collection, 'sync', this.render );
         this.listenTo( this.collection, 'add', this.addItem );
         this.$displayArea = $('.display-area');
-        this.collection.each( function(boat) {
-           this.addItem(boat);
-        }.bind(this) );
+        this.collection.each( this.addItem.bind(this) );
         this.addFeatureLink();
     },
     events: {
@@ -82,9 +80,7 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
     },
     renderFilteredBoatsAndMap: function () {
         this.removeSubviews(".display-area");
-        this.filteredCollection.forEach( function(boat) {
-           this.addItem(boat);
-        }.bind(this) );
+        this.filteredCollection.forEach( this.addItem.bind(this) );
         this.setMarkers(this.map, this.filteredCollection);
     },
     renderMap: function() {
@@ -130,9 +126,9 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
         this.updatePrice();
         this.filteredCollection = this.collection.filter( function(boat) {
             return boat.get('price') >= this.priceArray[0] &&
-                boat.get('price') <= this.priceArray[1] &&
-                _.include(this.form.styles, boat.get('style')) &&
-                _.include(this.form.size, boat.get('size'));
+                   boat.get('price') <= this.priceArray[1] &&
+                   _.include(this.form.styles, boat.get('style')) &&
+                   _.include(this.form.size, boat.get('size'));
         }.bind(this));
         this.renderFilteredBoatsAndMap();
     },

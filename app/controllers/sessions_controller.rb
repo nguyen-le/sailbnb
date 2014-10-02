@@ -10,7 +10,6 @@ class SessionsController < ApplicationController
       user_params[:email], 
       user_params[:password]
     )
-
     if @user
       login!(@user)
       redirect_to root_url
