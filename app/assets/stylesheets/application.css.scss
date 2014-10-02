@@ -287,6 +287,12 @@ z#logout-btn:hover {
     }
     #search-price {
       margin-left: 23px;
+      .ui-slider-range {
+        z-index:0;
+      }
+      .ui-slider-handle {
+        z-index:0;
+      }
     }
     #price-min {
       margin-left: 35px;
