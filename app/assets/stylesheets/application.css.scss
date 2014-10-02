@@ -34,6 +34,7 @@ label {
 body {
   font-family: Circular,/*'open sans',*/ helvetica;
   color: #555;
+  min-width: 850px;
 }
 
 footer {
@@ -61,6 +62,9 @@ footer {
   }
 }
 
+#boat-show-info, #boat-show-img-container {
+  min-width: 340px;
+}
 z.navbar-brand {
   img {
     transition: 40s;
@@ -160,6 +164,7 @@ z#logout-btn:hover {
 }
 
 #container {
+  min-width: 340px;
   margin-top: 50px;
 }
 
@@ -412,6 +417,7 @@ z#logout-btn:hover {
 
 .map {
   width: 40%;
+  min-width: 340px;
   float:left;
   height: 100vh;
   position: fixed;

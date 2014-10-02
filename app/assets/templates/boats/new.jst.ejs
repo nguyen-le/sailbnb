@@ -1,29 +1,40 @@
 <h1>Add Listing</h1>
 <form>
-<div>
-  <input type="text" name="boat[name]" placeholder="Name of Ship" value="" />
-</div>
-<div>
-  <input type="text" name="boat[location]" placeholder="Location" value="" />
-</div>
-<div>
-  <input type="text" name="boat[style]" placeholder="style" value="" />
-</div>
-<div>
-  <input type="text" name="boat[description]" placeholder="description" value="" />
-</div>
-<div>
-  <input type="text" name="boat[price]" placeholder="price" value="" />
-</div>
-<div>
-  <input type="text" name="boat[size]" placeholder="size" value="" />
-</div>
-<div>
-  <a class="fp-upload" href="javascript:void(0)">Upload Picture</a>
-</div>
-<div>
-  <input class="btn btn-danger" type="submit" value="List My Yacht" />
-</div>
+  <div>
+    <input type="text" name="boat[name]" placeholder="Name of Ship" value="" />
+  </div>
+  <div>
+    <input type="text" name="boat[location]" placeholder="Location" value="" />
+  </div>
+  <div>
+    <label for="">
+      <input type="radio" name="boat[style]" placeholder="style" value="Sail" />
+      Sail
+    </label>
+    <label for="">
+      <input type="radio" name="boat[style]" placeholder="style" value="Budget" />
+      Budget
+    </label>
+    <label for="">
+      <input type="radio" name="boat[style]" placeholder="style" value="Luxury" />
+      Luxury
+    </label>
+  </div>
+  <div>
+    <input type="text" name="boat[description]" placeholder="description" value="" />
+  </div>
+  <div>
+    <input type="text" name="boat[price]" placeholder="price" value="" />
+  </div>
+  <div>
+    <input type="text" name="boat[size]" placeholder="size" value="" />
+  </div>
+  <div>
+    <a class="fp-upload" href="javascript:void(0)">Upload Picture</a>
+  </div>
+  <div>
+    <input class="btn btn-danger" type="submit" value="List My Yacht" />
+  </div>
 
 </form>
 
