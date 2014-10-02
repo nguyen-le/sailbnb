@@ -3,15 +3,8 @@
 <head>
   <title>sailbnb</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= filepicker_js_include_tag %>
   <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/blitzer/jquery-ui.css" />
 
-  <script type="text/javascript">
-		filepicker.setKey("APRCioQYESv62DiDUIEDRz");
-  </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANjSpVSowcVlAItZsMGIDhw73_pdQz_Ys" type="text/javascript"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
 	<%= csrf_meta_tags %>
 </head>
 <body>
@@ -25,5 +18,12 @@
 <% end %>
 
 <%= yield %>
+<%= javascript_include_tag 'application' %>
+<%= filepicker_js_include_tag %>
+<script type="text/javascript">
+	filepicker.setKey("APRCioQYESv62DiDUIEDRz");
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANjSpVSowcVlAItZsMGIDhw73_pdQz_Ys" type="text/javascript"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
 </body>
 </html>
