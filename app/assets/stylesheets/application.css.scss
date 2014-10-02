@@ -23,6 +23,10 @@
   src: url("https://a1.muscache.com/airbnb/static/o2.1/build/fonts/Circular_Air-Book-b2878d8b449f2c4140c98427357a85a7.eot?#") format("eot"), url("https://a0.muscache.com/s/static/o2.1/build/fonts/Circular_Air-Book-b54ee6f7a2883a35e16cb7015094984c.woff") format("woff"), url("https://a2.muscache.com/airbnb/static/o2.1/build/fonts/Circular_Air-Book-0e6b0995e58ac0b00110dce5b5ef1f75.svg") format("svg");
 }
 
+a:focus {
+  outline: 0;
+}
+
 label {
   font-weight: 400;
 }
@@ -187,19 +191,49 @@ z#logout-btn:hover {
 }
 
 #login-form {
-  border: thin dashed blue;
+  height: 180px;
+}
+.login-form {
+  borderz: 10px solid #ff5a5f;
+  background-color: white;
   position:absolute;
-  height: 500px;
+  height: 215px;
   width: 400px;
   top: 50%;
-  margin-top: -200px;
   left: 50%;
+  margin-top: -200px;
   margin-left: -200px;
+  border-radius: 10px;
+  .sign-up-header {
+    border-radius: 10px 10px 0px 0px;
+    position: relative;
+    top: -1px;
+    background-color: #ff5a5f;
+    margin-top: 0;
+    color: white;
+    font-size: 2em;
+  }
+  form {
+    padding-left: 10px;
+    .login-field {
+      margin: 5px;
+      font-size: 1em;
+    }
+    .login-field-full {
+      width: 372px;
+    }
+  }
+  #sign-up-footer {
+    margin-left: 15px;
+  }
 }
+
+
 
 #login-panel-one {
   position: relative;
-  background-image: url('http://www.charterworld.com/images/yachts/SILENCIO%20-%20%20Aft%20Deck%20at%20Night.jpg');
+  background-image: url('CoverDeckCropped1.jpg');
+  background-imagez: url('http://www.charterworld.com/images/yachts/SILENCIO%20-%20%20Aft%20Deck%20at%20Night.jpg');
   background-imagez: url('http://iliketowastemytime.com/sites/default/files/orsos-floating-mobile-island1.jpg');
   height: 600px;
   background-size: cover;
@@ -209,6 +243,15 @@ z#logout-btn:hover {
   .pull-right {
     padding: 15px;
     font-size: 0.9em;
+  }
+  #welcome {
+    position: relative;
+    top: 20%;
+    span {
+      font-size: 4em;
+      font-weight: 900;
+    }
+    text-shadow: 1px 1px 1px #333, 0px 0px 10px black;
   }
 }
 
@@ -319,15 +362,6 @@ z#logout-btn:hover {
    }
 }
 
-#welcome {
-  position: relative;
-  top: 20%;
-  span {
-    font-size: 4em;
-    font-weight: 900;
-  }
-  text-shadow: 1px 1px 2px #777, 0px 0px 50px black;
-}
 
 
 .boat-owner {
@@ -413,10 +447,6 @@ z#logout-btn:hover {
   }
 }
 
-.login-field {
-  margin: 5px;
-  font-size: 1.5em;
-}
 
 .logo {
   font-size: 1.5em;

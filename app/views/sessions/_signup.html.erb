@@ -1,5 +1,5 @@
-  <div class="login-form" id="login-form" style="">
-    <p class="text-center sign-up-header">sailbnb</p>
+  <div class="login-form" style="">
+    <p class="text-center sign-up-header">Sign Up</p>
     <form action="<%= session_url %>" method="post" >
       <input 
         type="hidden" 
@@ -7,6 +7,22 @@
         id="" 
         value="<%= form_authenticity_token %>" 
       />
+      <div>
+        <input 
+          type="text" 
+          placeholder="First Name" 
+          name="user[f_name]" 
+          class="login-field" 
+          value="" 
+        />
+        <input 
+          type="text" 
+          placeholder="Last Name" 
+          name="user[l_name]" 
+          class="login-field" 
+          value="" 
+        />
+      </div>
       <div>
         <input 
           type="text" 
@@ -24,7 +40,7 @@
           class="login-field login-field-full" 
         />
       </div>
-      <input type="submit" class="login-field login-field-full text-center btn btn-primary" value="Log In" />
+      <input type="submit" class="login-field login-field-full text-center btn btn-primary" value="Create Account" />
     </form>
     <!--<p id="sign-up-footer"> Already have an account? <a href="#">Log In</a></p>-->
   </div>
