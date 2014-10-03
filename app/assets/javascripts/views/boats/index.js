@@ -21,6 +21,10 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
         $ball = $('#ball');
         ballStyle = $('#ball')[0].style;
         $ball2 = $('#ball2');
+        $light1 = $('#light-1');
+        $light2 = $('#light-2');
+        $ocean = $('#moving-ocean');
+        $neon = $('#neon');
         $notif.on("mouseenter", function() {
             ballStyle.top = '0px';
             ballStyle.display = 'block';
@@ -37,48 +41,60 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
         $notif.on("click", function() {
             flick2 = null;
             flick2 = setInterval( function() {
-                console.log("flick2");
                 $ball2.toggleClass('r-flick');
             }, 250);
             $notif.off("mouseleave");
             ballStyle.top = '0px';
-            console.log("music playing");
             audio = $('audio')[0];
             audio.play();
             var a = 0;
-            //setTimeout( function() {
-            //    $('#moving-boat').addClass("moving");
-            //    $('#moving-boat-div').css("left", (a++)+"100px");
-            //}, 1000 );
+            var b = 0;
+            boatStyle = $('#moving-boat-div')[0].style;
+            oceanStyle = $ocean[0].style;
             setInterval( function() {
-               $('#moving-boat-div').css("left", (a++)+"px");
+               boatStyle.left = (a++)+"px";
             }, 40 );
+            setInterval( function() {
+                oceanStyle = (b++)+"px";
+            }, 20 );
             lightTog1 = setInterval( function() {
-               $('#light-1').toggleClass("l-flash");
+               $light1.toggleClass("l-flash");
             },200 );
             setTimeout( function() {
                 lightTog2 = setInterval( function() {
-                   $('#light-1').toggleClass("r-flash");
+                   $light1.toggleClass("r-flash");
                 },200 );
             }, 100 );
             setTimeout( function() {
-                lightTog3 = setInterval( function() {
-                   $('#light-2').toggleClass("l2-flash");
+                neonTog1 = setInterval( function() {
+                   $neon.toggleClass("white-flash");
+                },200 );
+            }, 4700 );
+            setTimeout( function() {
+                neonTog2 = setInterval( function() {
+                   $light2.toggleClass("l2-flash");
+                   $neon.toggleClass("purple-flash");
                 },100 );
             }, 8000 );
             setTimeout( function() {
                 clearInterval(lightTog3);
-                $('#light-2').removeClass("l2-flash");
+                clearInterval(neonTog2);
+                $light2.removeClass("l2-flash");
+                $neon.removeClass("purple-flash");
             }, 11600 );
             setTimeout( function() {
                 lightTog3 = setInterval( function() {
-                   $('#light-2').toggleClass("l2-flash");
+                   $light2.toggleClass("l2-flash");
+                   $neon.toggleClass("purple-flash");
                 },100 );
-            }, 22000 );
+            }, 21700 );
             $('#party-modal').on("click", function() {
                 ballStyle.top = '-200px';
                 clearInterval(flick);
                 clearInterval(flick2);
+                clearInterval(lightTog1);
+                clearInterval(lightTog2);
+                clearInterval(lightTog3);
                 audio.load();
             });
         }.bind(this));
