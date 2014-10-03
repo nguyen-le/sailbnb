@@ -12,7 +12,7 @@
         <img id="boat-show-owner"src="<%= boat.owner().get('image_url') %>" alt="" />
       </div>
       <div class="text-center">
-        <%= boat.owner().get('f_name') %>
+        <%= boat.owner().escape('f_name') %>
       </div>
     </div>
     <div class="col-sm-6">
@@ -48,7 +48,7 @@
 
 <div id="boat-show-about">
   <div class="container">
-    <h4>About the Host, <%= boat.owner().get('f_name') %></h4>
-    <p><%= boat.owner().get('intro') %></p>
+    <h4>About the Host, <%= boat.owner().escape('f_name') %></h4>
+    <p><%= boat.owner().escape('intro') %></p>
   </div>
 </div>
