@@ -49,19 +49,19 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
             audio = $('audio')[0];
             audio.play();
             var a = 0;
-            var b = -2000;
+            var b = -4000;
             var c = -800;
             boatStyle = $('#moving-boat-div')[0].style;
             oceanStyle = $ocean[0].style;
             setInterval( function() {
                boatStyle.left = (a++)+"px";
-            }, 40 );
+            }, 35 );
             setInterval( function() {
                 oceanStyle.left = (b++)+"px";
-            }, 30 );
+            }, 25 );
             setInterval( function() {
                 waveStyle.left = (c++)+"px";
-            }, 35 );
+            }, 30 );
             lightTog1 = setInterval( function() {
                $light1.toggleClass("l-flash");
             },200 );
