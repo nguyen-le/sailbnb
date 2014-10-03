@@ -1,17 +1,20 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
 ActiveRecord::Base.transaction do
   User.create!( f_name: 'Guest', l_name:'Guester', email: 'guest', password: 'apples')
   User.create!( f_name: 'John', l_name:'Doe', email: 'johndoe', password: 'apples')
   User.create!( f_name: 'Jane', l_name:'Doe', email: 'janedoe', password: 'apples')
   User.create!( f_name: 'Elon', l_name:'Musk', email: 'elonmusk', password: 'apples')
   User.create!( f_name: 'Walter', l_name:'White', email: 'heisenberg', password: 'apples')
-  User.create!( f_name: 'Tony', l_name:'Stark', email: 'ironman', password: 'apples')
+  User.create!( f_name: 'Tony', l_name:'Stark', email: 'irohman', password: 'apples')
+  User.create!( f_name: 'Jesse', l_name:'Pinkman', email: 'jessepinky', password: 'apples')
+  User.create!( f_name: 'David', l_name:'Hansson', email: 'dhh', password: 'apples')
+  User.create!( f_name: 'App', l_name:'Academy', email: 'giantrobot', password: 'apples')
+  User.create!( f_name: 'Arthur', l_name:'Curry', email: 'aquaman', password: 'apples')
+  User.create!( f_name: 'Bruce', l_name:'Wayne', email: 'bwayne', password: 'apples')
+  User.create!( f_name: 'Oliver', l_name:'Queen', email: 'oqueen', password: 'apples')
+  User.create!( f_name: 'Barbara', l_name:'Gordon', email: 'bgordon', password: 'apples')
+  User.create!( f_name: 'Jay', l_name:'Gatsby', email: 'gatsby', password: 'apples')
+  User.create!( f_name: 'Lex', l_name:'Luthor', email: 'iamlex', password: 'apples')
+  User.create!( f_name: 'Sue', l_name:'Richards', email: 'youcantseeme', password: 'apples')
 
   b1 = Boat.new( name: 'Popeye', lat: 37.8211, long: -122.3759, price: '100', style: 'Budget', size:  4 , user_id: 1, tagline: 'A small boat')
   b1.description = "This is a wonderfully small boat. If you like a cozy and well furnished yacht, this is the one for you!"
