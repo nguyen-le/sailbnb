@@ -18,10 +18,9 @@
     <div class="col-sm-6">
       <p id="boat-show-name"><%= boat.escape('name') %></p>
       <p>"<%= boat.escape('tagline') %>"</p>
-      <a class="fp-upload" href="javascript:void(0)">Upload Picture</a>
-      <p><%= boat.escape('location') %></p>
-      <p><%= boat.escape('style') %></p>
-      <p><%= boat.escape('size') %></p>
+      <!--<a class="fp-upload" href="javascript:void(0)">Upload Picture</a>-->
+      <p>Style: <%= boat.escape('style') %></p>
+      <p>Fits: <%= boat.escape('size') %></p>
     </div>
     <div class="col-sm-4">
       <div id="boat-show-rent-req">
