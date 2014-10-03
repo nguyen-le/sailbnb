@@ -17,8 +17,12 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
         "change .date-start" : "addFiltersDateLeave"
     },
     addNotifications: function () {
-        $('#notifications').on("click", function() {
-            $('nav').addClass("navbar-inverse");
+        $notif = $('#notifications');
+        $notif.on("mouseover", function() {
+        });
+        $notif.on("click", function() {
+            audio = $('audio')[0];
+            audio.play();
         });
     },
     addEventFeatured: function() {
@@ -44,7 +48,7 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
             numberOfMonths: [1,2],
         });
         setTimeout( function() {
-            this.$leave.trigger("focus");    
+            this.$leave.trigger("focus");
         }.bind(this), 0);
     },
     addFilterPrice: function() {
