@@ -52,6 +52,17 @@
       box-shadow: 20px 0px 10px 10px violet;
     }
   }
+  #neon {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    &.purple-flash {
+      box-shadow: 0px -20px 50px 30px rgba(120, 60, 150, 1);
+    }
+    &.white-flash {
+      box-shadow: 0px -20px 50px 30px rgba(255, 255, 255, 1);
+    }
+  }
 }
 #moving-boat {
   position: absolute;
