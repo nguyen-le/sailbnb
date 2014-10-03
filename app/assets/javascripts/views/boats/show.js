@@ -19,6 +19,8 @@ WaterBnb.Views.BoatShow = Backbone.CompositeView.extend({
     },
     removeFeatured: function () {
         $('li#featured-li').empty();
+        $('#notifications').css("display", "none");
+        $('#ball').css("display", "none");
     },
     render: function() {
         var content = this.template({ boat: this.model });

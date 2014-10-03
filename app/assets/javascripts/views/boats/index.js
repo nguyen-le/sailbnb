@@ -18,12 +18,40 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
     },
     addNotifications: function () {
         $notif = $('#notifications');
-        $notif.on("mouseover", function() {
+        $ball = $('#ball');
+        ballStyle = $('#ball')[0].style;
+        $ball2 = $('#ball2');
+        $notif.on("mouseenter", function() {
+            ballStyle.top = '0px';
+            ballStyle.display = 'block';
+            flick = null;
+            flick = setInterval( function() {
+                console.log("flick");
+                $ball.toggleClass('l-flick');
+            }, 200 );
+        }.bind(this));
+        $notif.on("mouseleave", function() {
+            ballStyle.top = '-200px';
+            clearInterval(flick);
         });
         $notif.on("click", function() {
+            flick2 = null;
+            flick2 = setInterval( function() {
+                console.log("flick2");
+                $ball2.toggleClass('r-flick');
+            }, 250);
+            $notif.off("mouseleave");
+            ballStyle.top = '0px';
+            console.log("music playing");
             audio = $('audio')[0];
             audio.play();
-        });
+            $('#party-modal').on("click", function() {
+                ballStyle.top = '-200px';
+                clearInterval(flick);
+                clearInterval(flick2);
+                audio.load();
+            });
+        }.bind(this));
     },
     addEventFeatured: function() {
         $('#featured').on("click", this.showFeatured.bind(this));
