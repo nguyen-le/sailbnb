@@ -1,6 +1,6 @@
 <% if (boat.images().models[0]) { %>
   <div id="boat-show-img-container">
-  <% var i = boat.images().models %>
+  <% i = boat.images().models %>
     <div id="boat-show-img" style="background-image:url(<%= i[i.length - 1].get('filepicker_url') %>)">
     </div>
   </div>
@@ -33,6 +33,11 @@
 <div id="boat-show-desc">
   <div class="container">
     <h4>About This Listing</h4>
+<% if (boat.images().models[0]) { %>
+  <div>
+    <img id="interior" src="<%= i[i.length-2].get('filepicker_url') %>">
+  </div>
+<% } %>
     <p><%= boat.escape('description') %></p>
   </div>
 </div>
@@ -44,8 +49,6 @@
 <div id="boat-show-about">
   <div class="container">
     <h4>About the Host, <%= boat.owner().get('f_name') %></h4>
+    <p><%= boat.owner().get('intro') %></p>
   </div>
 </div>
-      <% boat.images().models.forEach( function(image) { %>
-        <h5><%= image.get('filepicker_url') %></h5>
-      <% } ) %>
