@@ -42,11 +42,18 @@
   <div class="container">
     <div class="row col-md-offset-2 col-md-8">
       <div class="col-md-3">
-        <div>
-          language
-        </div>
-        <div>
-          currency
+        <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdown-language" data-toggle="dropdown">
+            English
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdown-language">
+            <li role="presentation" class="dropdown-header">Language</li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Français</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">English</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Espa&ntilde;ol</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Tiếng Việt</a></li>
+          </ul>
         </div>
       </div>
       <div class="col-md-3 text-left">
