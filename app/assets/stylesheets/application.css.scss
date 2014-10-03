@@ -25,15 +25,16 @@
 
 #moving-boat-div {
   background-image: url("ship2.png");
+  display:inline-block;
   width: 564px;
   height: 263px;
   position:absolute;
-  bottom: 30px;
+  bottom: 200px;
   transition: 3s;
   #light-1, #light-2 {
     position: absolute;
     top:10px;
-    left: 125px;
+    left: 113px;
     background-color: yellow;
     height: 10px;
     width:10px;
@@ -55,6 +56,19 @@
 #moving-boat {
   position: absolute;
   bottom:0px;
+}
+#moving-ocean {
+  background-image: url("ocean-bottom1.png");
+  height: 300px;
+  width: 4000px;
+  position: absolute;
+  bottom: 0px;
+  left: -2000px;
+}
+#wave {
+  position: absolute;
+  bottom: 40px;
+  left: -1200px;
 }
 
 a:focus {
