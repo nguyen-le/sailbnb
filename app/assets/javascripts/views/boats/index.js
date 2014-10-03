@@ -45,6 +45,36 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
             console.log("music playing");
             audio = $('audio')[0];
             audio.play();
+            var a = 0;
+            //setTimeout( function() {
+            //    $('#moving-boat').addClass("moving");
+            //    $('#moving-boat-div').css("left", (a++)+"100px");
+            //}, 1000 );
+            setInterval( function() {
+               $('#moving-boat-div').css("left", (a++)+"px");
+            }, 40 );
+            lightTog1 = setInterval( function() {
+               $('#light-1').toggleClass("l-flash");
+            },200 );
+            setTimeout( function() {
+                lightTog2 = setInterval( function() {
+                   $('#light-1').toggleClass("r-flash");
+                },200 );
+            }, 100 );
+            setTimeout( function() {
+                lightTog3 = setInterval( function() {
+                   $('#light-2').toggleClass("l2-flash");
+                },100 );
+            }, 8000 );
+            setTimeout( function() {
+                clearInterval(lightTog3);
+                $('#light-2').removeClass("l2-flash");
+            }, 11600 );
+            setTimeout( function() {
+                lightTog3 = setInterval( function() {
+                   $('#light-2').toggleClass("l2-flash");
+                },100 );
+            }, 22000 );
             $('#party-modal').on("click", function() {
                 ballStyle.top = '-200px';
                 clearInterval(flick);

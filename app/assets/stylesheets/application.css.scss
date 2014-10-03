@@ -23,6 +23,40 @@
   src: url("https://a1.muscache.com/airbnb/static/o2.1/build/fonts/Circular_Air-Book-b2878d8b449f2c4140c98427357a85a7.eot?#") format("eot"), url("https://a0.muscache.com/s/static/o2.1/build/fonts/Circular_Air-Book-b54ee6f7a2883a35e16cb7015094984c.woff") format("woff"), url("https://a2.muscache.com/airbnb/static/o2.1/build/fonts/Circular_Air-Book-0e6b0995e58ac0b00110dce5b5ef1f75.svg") format("svg");
 }
 
+#moving-boat-div {
+  background-image: url("ship2.png");
+  width: 564px;
+  height: 263px;
+  position:absolute;
+  bottom: 30px;
+  transition: 3s;
+  #light-1, #light-2 {
+    position: absolute;
+    top:10px;
+    left: 125px;
+    background-color: yellow;
+    height: 10px;
+    width:10px;
+    border-radius: 5px;
+    &.l-flash {
+      box-shadow: -20px 0px 10px white;
+    }
+    &.r-flash {
+      box-shadow: 20px 0px 10px white;
+    }
+    &.l2-flash {
+      box-shadow: 30px 0px 10px 10px rgba(0,0,200,0.6), 20px 0px 10px 20px purple;
+    }
+    &.r2-flash {
+      box-shadow: 20px 0px 10px 10px violet;
+    }
+  }
+}
+#moving-boat {
+  position: absolute;
+  bottom:0px;
+}
+
 a:focus {
   outline: 0;
 }
@@ -37,7 +71,7 @@ label {
 }
 
 #ball, #ball2 {
-  background-image: url('http://www.officialpsds.com/images/thumbs/disco-ball-psd26170.png');
+  background-image: url('disco.png');
   background-size: 100% 100%;
   height: 150px;
   width: 150px;
@@ -56,7 +90,6 @@ label {
 }
 
 #ball2 {
-  background-image: url('http://www.officialpsds.com/images/thumbs/disco-ball-psd26170.png');
   top: 50px;
   box-shadow: -30px 0px 10px 0px blue,
               -35px 0px 10px 0px yellow;
