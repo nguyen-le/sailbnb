@@ -6,6 +6,7 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
         this.$displayArea = $('.display-area');
         this.collection.each( this.addItem.bind(this) );
         this.addFeatureLink();
+        setTimeout( this.addNotifications.bind(this), 1000);
     },
     events: {
         "slide #search-price" : "updatePrice",
@@ -14,6 +15,11 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
         "click .search-size" : "updateFilter",
         "click #resetFilter" : "pseudoResetFilter",
         "change .date-start" : "addFiltersDateLeave"
+    },
+    addNotifications: function () {
+        $('#notifications').on("click", function() {
+            $('nav').addClass("navbar-inverse");
+        });
     },
     addEventFeatured: function() {
         $('#featured').on("click", this.showFeatured.bind(this));
