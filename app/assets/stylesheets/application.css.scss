@@ -56,8 +56,7 @@
     position: absolute;
     bottom: 10px;
     width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+    left: 30px;
     &.purple-flash {
       box-shadow: 0px -20px 50px 30px rgba(120, 60, 150, 1);
     }
@@ -76,7 +75,6 @@
   width: 4000px;
   position: absolute;
   bottom: 0px;
-  left: -2000px;
 }
 #wave {
   position: absolute;
@@ -118,7 +116,8 @@ label {
 
 #ball2 {
   top: 50px;
-  box-shadow: -30px 0px 10px 0px blue,
+  box-shadow: none;
+  zbox-shadow: -30px 0px 10px 0px blue,
               -35px 0px 10px 0px yellow;
   &.r-flick {
     box-shadow: 30px 0px 10px 0px purple,

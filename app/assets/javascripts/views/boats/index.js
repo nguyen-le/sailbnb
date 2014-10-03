@@ -25,6 +25,7 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
         $light2 = $('#light-2');
         $ocean = $('#moving-ocean');
         $neon = $('#neon');
+        waveStyle = $('#wave')[0].style;
         $notif.on("mouseenter", function() {
             ballStyle.top = '0px';
             ballStyle.display = 'block';
@@ -40,23 +41,27 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
         });
         $notif.on("click", function() {
             flick2 = null;
-            flick2 = setInterval( function() {
-                $ball2.toggleClass('r-flick');
-            }, 250);
+            //flick2 = setInterval( function() {
+            //    $ball2.toggleClass('r-flick');
+            //}, 250);
             $notif.off("mouseleave");
             ballStyle.top = '0px';
             audio = $('audio')[0];
             audio.play();
             var a = 0;
-            var b = 0;
+            var b = -2000;
+            var c = -800;
             boatStyle = $('#moving-boat-div')[0].style;
             oceanStyle = $ocean[0].style;
             setInterval( function() {
                boatStyle.left = (a++)+"px";
             }, 40 );
             setInterval( function() {
-                oceanStyle = (b++)+"px";
-            }, 20 );
+                oceanStyle.left = (b++)+"px";
+            }, 30 );
+            setInterval( function() {
+                waveStyle.left = (c++)+"px";
+            }, 35 );
             lightTog1 = setInterval( function() {
                $light1.toggleClass("l-flash");
             },200 );
@@ -81,7 +86,7 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
                 clearInterval(neonTog2);
                 $light2.removeClass("l2-flash");
                 $neon.removeClass("purple-flash");
-            }, 11600 );
+            }, 11000 );
             setTimeout( function() {
                 lightTog3 = setInterval( function() {
                    $light2.toggleClass("l2-flash");
