@@ -40,7 +40,7 @@ ActiveRecord::Base.transaction do
   b5.images.build(filepicker_url: 'https://www.filepicker.io/api/file/IQBjaCTFqrYdt7MFo5DA')
   b5.save!
 
-  b6 = Boat.new( name: "BatmoYacht", lat: 37.8070, long: -122.3995, price: '1000', style: 'Luxury', size: 4, user_id: 12, tagline: "I am the dark shark")
+  b6 = Boat.new( name: "BatmoYacht", lat: 37.8070, long: -122.3995, price: '1000', style: 'Luxury', size: 4, user_id: 11, tagline: "I am the dark shark")
   b6.images.build(filepicker_url: 'https://www.filepicker.io/api/file/IQBjaCTFqrYdt7MFo5DA')
   b6.save!
 
@@ -48,11 +48,17 @@ ActiveRecord::Base.transaction do
   b7.images.build(filepicker_url: 'https://www.filepicker.io/api/file/IQBjaCTFqrYdt7MFo5DA')
   b7.save!
 
-  b8 = Boat.new( name: "Ruby on Sails", lat: 37.8070, long: -122.3995, price: '18000', style: 'Luxury', size: 40, user_id: 9, tagline: "Learn you a ruby, for great good!")
+  b8 = Boat.new( name: "Queen's Gambit", lat: 37.8070, long: -122.3995, price: '2600', style: 'Sail', size: 8, user_id: 12, tagline: "A true beauty")
   b8.images.build(filepicker_url: 'https://www.filepicker.io/api/file/IQBjaCTFqrYdt7MFo5DA')
   b8.save!
 
+  b9 = Boat.new( name: "Heisenberg", lat: 37.8070, long: -122.3995, price: '10000', style: 'Budget', size: 4, user_id: 5, tagline: "Lot's of blue sky")
+  b9.images.build(filepicker_url: 'https://www.filepicker.io/api/file/IQBjaCTFqrYdt7MFo5DA')
+  b9.save!
 
+  b10 = Boat.new( name: "Iron Boat Mark V", lat: 37.8070, long: -122.3995, price: '2500', style: 'Budget', size: 4, user_id: 6, tagline: "Simply the best")
+  b10.images.build(filepicker_url: 'https://www.filepicker.io/api/file/IQBjaCTFqrYdt7MFo5DA')
+  b10.save!
 
   RentalRequest.create(start:'30/9/2014', leave:'6/10/2014', boat_id: 1, renter_id: 2, guests: 4)
   RentalRequest.create(start:'30/9/2014', leave:'6/10/2014', boat_id: 2, renter_id: 1, guests: 6)
