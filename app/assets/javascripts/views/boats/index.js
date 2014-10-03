@@ -139,7 +139,7 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
             range: true,
             min: 0,
             max: 5000,
-            values: [0,5000],
+            values: [0,20000],
             step: 100
         });
     },
