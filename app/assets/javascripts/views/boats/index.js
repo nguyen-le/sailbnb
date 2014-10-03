@@ -40,6 +40,7 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
             clearInterval(flick);
         });
         $notif.on("click", function() {
+            $("#notif-num").addClass("read");
             flick2 = null;
             //flick2 = setInterval( function() {
             //    $ball2.toggleClass('r-flick');

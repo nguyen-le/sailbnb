@@ -81,6 +81,14 @@
   bottom: 40px;
   left: -1200px;
 }
+#notif-num {
+  &:hover {
+    color: gray;
+  }
+  &.read {
+    display:none;
+  }
+}
 
 a:focus {
   outline: 0;
