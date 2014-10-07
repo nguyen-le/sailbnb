@@ -25,9 +25,7 @@ class User < ActiveRecord::Base
   end
 
   def ensure_image_url
-    unless self.image_url
-      self.image_url = 'http://www.theatrework.org/sites/default/files/styles/medium/public/images/BLANK_PROFILE.png'
-    end
+    self.image_url ||= 'http://www.theatrework.org/sites/default/files/styles/medium/public/images/BLANK_PROFILE.png'
   end
 
   def ensure_session_token
