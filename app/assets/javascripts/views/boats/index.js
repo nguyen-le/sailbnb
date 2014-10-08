@@ -6,7 +6,7 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
         this.$displayArea = $('.display-area');
         this.collection.each( this.addItem.bind(this) );
         this.addFeatureLink();
-        setTimeout( this.addNotifications.bind(this), 1000);
+        setTimeout( this.addSailingBoat.bind(this), 1000);
     },
     events: {
         "slide #search-price" : "updatePrice",
@@ -16,44 +16,49 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
         "click #resetFilter" : "pseudoResetFilter",
         "change .date-start" : "addFiltersDateLeave"
     },
-    addNotifications: function () {
+    addDiscoBall: function () {
         $notif = $('#notifications');
         $ball = $('#ball');
         ballStyle = $('#ball')[0].style;
-        $ball2 = $('#ball2');
-        $light1 = $('#light-1');
-        $light2 = $('#light-2');
-        $ocean = $('#moving-ocean');
-        $neon = $('#neon');
-        waveStyle = $('#wave')[0].style;
         $notif.on("mouseenter", function() {
             ballStyle.top = '0px';
             ballStyle.display = 'block';
             flick = null;
             flick = setInterval( function() {
-                console.log("flick");
                 $ball.toggleClass('l-flick');
             }, 200 );
-        }.bind(this));
+        });
         $notif.on("mouseleave", function() {
             ballStyle.top = '-200px';
             clearInterval(flick);
         });
+    },
+    clearIntervals: function() {
+        $('#party-modal').on("click", function() {
+            ballStyle.top = '-200px';
+            clearInterval(flick);
+            clearInterval(flick2);
+            clearInterval(lightTog1);
+            clearInterval(lightTog2);
+            clearInterval(neonTog1);
+            clearInterval(neonTog2);
+            audio.load();
+        });
+    },
+    addSailingBoat: function () {
+        //this adds a moving boat animation
+        //it is nothing but a little animation fun when clicking on your
+        //notifications on the top right hand corner
+        //slightly broken
+        this.addDiscoBall();
+        $light1 = $('#light-1');
+        $light2 = $('#light-2');
+        $ocean = $('#moving-ocean');
+        $neon = $('#neon');
+        waveStyle = $('#wave')[0].style;
         $notif.on("click", function() {
-            $('#party-modal').on("click", function() {
-                ballStyle.top = '-200px';
-                clearInterval(flick);
-                clearInterval(flick2);
-                clearInterval(lightTog1);
-                clearInterval(lightTog2);
-                clearInterval(lightTog3);
-                audio.load();
-            });
             $("#notif-num").addClass("read");
             flick2 = null;
-            //flick2 = setInterval( function() {
-            //    $ball2.toggleClass('r-flick');
-            //}, 250);
             $notif.off("mouseleave");
             ballStyle.top = '0px';
             audio = $('audio')[0];
@@ -68,7 +73,7 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
             }, 35 );
             setInterval( function() {
                 oceanStyle.left = (b++)+"px";
-            }, 25 );
+            }, 15 );
             setInterval( function() {
                 waveStyle.left = (c++)+"px";
             }, 30 );
@@ -84,25 +89,8 @@ WaterBnb.Views.BoatsIndex = Backbone.CompositeView.extend({
                 neonTog1 = setInterval( function() {
                    $neon.toggleClass("white-flash");
                 },200 );
-            }, 4700 );
-            setTimeout( function() {
-                neonTog2 = setInterval( function() {
-                   $light2.toggleClass("l2-flash");
-                   $neon.toggleClass("purple-flash");
-                },100 );
-            }, 8000 );
-            setTimeout( function() {
-                clearInterval(lightTog3);
-                clearInterval(neonTog2);
-                $light2.removeClass("l2-flash");
-                $neon.removeClass("purple-flash");
-            }, 11000 );
-            setTimeout( function() {
-                lightTog3 = setInterval( function() {
-                   $light2.toggleClass("l2-flash");
-                   $neon.toggleClass("purple-flash");
-                },100 );
-            }, 21700 );
+            }, 700 );
+            this.clearIntervals();
         }.bind(this));
     },
     addEventFeatured: function() {
